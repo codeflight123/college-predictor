@@ -5,7 +5,7 @@ export function scoreCollege(college, profile) {
     sat, act, gpa, weightedGpa,
     apCourses, honorsCourses, majorRelatedCourses,
     leadershipRoles, ecScore, essayScore, major,
-    awards, languages, languageYears,
+    awards, languageYears,
     hsCity, hsState, hsType,
   } = profile;
 
