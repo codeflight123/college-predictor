@@ -1,558 +1,370 @@
-// Minimal clean data module with empty placeholders to avoid syntax errors.
-export const COMPETITIVE_CITIES = [];
-export const US_STATES = [];
-export const MAJORS = [];
-export const AP_COURSES = [];
-export const HONORS_COURSES = [];
-export const LANGUAGES = [];
-export const LEADERSHIP_ROLES = [];
-export const AWARDS = [];
-export const MAJOR_EC_SUGGESTIONS = { default: [] };
-export const COLLEGES = [];
+// colleges.js — full data file
 
-export default {};
-// Data exports for the app: colleges and selection lists
 export const COMPETITIVE_CITIES = [
-  "palo alto", "stanford", "menlo park", "mountain view", "cupertino",
-  "new york", "nyc", "manhattan", "brooklyn",
-  "san francisco", "los angeles", "chicago", "boston", "seattle"
+  "new york","nyc","brooklyn","manhattan","queens","bronx",
+  "los angeles","la","san francisco","sf","palo alto","cupertino","san jose","menlo park","mountain view",
+  "boston","cambridge","brookline","lexington","newton","concord",
+  "chicago","evanston","naperville","lake forest","winnetka",
+  "washington dc","dc","bethesda","mclean","potomac","chevy chase","great falls",
+  "seattle","bellevue","redmond","mercer island","kirkland",
+  "houston","dallas","austin","plano","frisco",
+  "miami","coral gables","boca raton",
+  "atlanta","johns creek","alpharetta",
+  "princeton","greenwich","fairfield","westport","darien","new canaan",
+  "scarsdale","great neck","syosset","jericho","manhasset","chappaqua",
+  "irvine","fremont","pleasanton","walnut creek","dublin",
+  "ann arbor","troy","birmingham","bloomfield hills",
+  "minneapolis","eden prairie","edina","wayzata",
+  "richmond","mclean","potomac","rockville",
 ];
 
 export const US_STATES = [
-  "AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID",
-  "IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS",
-  "MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK",
-  "OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"
+  "AL","AK","AZ","AR","CA","CO","CT","DE","DC","FL",
+  "GA","HI","ID","IL","IN","IA","KS","KY","LA","ME",
+  "MD","MA","MI","MN","MS","MO","MT","NE","NV","NH",
+  "NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI",
+  "SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"
 ];
 
 export const MAJORS = [
-  "Undecided", "Computer Science", "Engineering", "Biology", "Business",
-  "Economics", "Psychology", "English", "History", "Art"
+  "Computer Science","Software Engineering","Data Science","Artificial Intelligence",
+  "Electrical Engineering","Mechanical Engineering","Civil Engineering",
+  "Chemical Engineering","Aerospace Engineering","Biomedical Engineering",
+  "Engineering (General)","Mathematics","Statistics","Physics",
+  "Biology","Chemistry","Neuroscience","Environmental Science","Biochemistry",
+  "Pre-Med","Nursing","Public Health","Pharmacy","Kinesiology",
+  "Economics","Business Administration","Finance","Accounting","Marketing",
+  "Political Science","International Relations","Public Policy","Law (Pre-Law)",
+  "History","Philosophy","English","Linguistics","Journalism","Communications",
+  "Psychology","Sociology","Anthropology","Education","Social Work",
+  "Architecture","Urban Planning","Design","Film","Music","Theater","Art",
+  "Agriculture","Veterinary","Forestry","Marine Biology",
+  "Undecided",
 ];
 
 export const AP_COURSES = [
-  "AP Calculus AB", "AP Calculus BC", "AP Physics 1", "AP Physics C", "AP Chemistry",
-  "AP Biology", "AP English Language", "AP English Literature", "AP US History", "AP Microeconomics"
+  "AP Calculus AB","AP Calculus BC","AP Statistics","AP Precalculus",
+  "AP Physics 1","AP Physics 2","AP Physics C: Mechanics","AP Physics C: E&M",
+  "AP Chemistry","AP Biology","AP Environmental Science",
+  "AP Computer Science A","AP Computer Science Principles",
+  "AP US History","AP World History","AP European History","AP African American Studies",
+  "AP US Government","AP Comparative Government","AP Economics (Macro)","AP Economics (Micro)",
+  "AP English Language","AP English Literature",
+  "AP Spanish Language","AP Spanish Literature",
+  "AP French Language","AP Mandarin","AP Latin","AP Japanese","AP Italian","AP German",
+  "AP Psychology","AP Art History","AP Music Theory",
+  "AP Studio Art: Drawing","AP Studio Art: 2D","AP Studio Art: 3D",
+  "AP Human Geography","AP Seminar","AP Research",
 ];
 
 export const HONORS_COURSES = [
-  "Honors Math", "Honors Physics", "Honors Chemistry", "Honors English", "Honors History"
+  "Honors English","Honors Math","Honors Algebra II","Honors Pre-Calculus",
+  "Honors Biology","Honors Chemistry","Honors Physics",
+  "Honors History","Honors World History","Honors US History",
+  "Honors Spanish","Honors French","Honors Economics",
+  "Honors Computer Science",
+  "Honors Intro to Engineering",
+  "Honors Principles of Engineering",
+  "Honors Medical Intervention",
+  "Honors Principles of Biomedical Science",
+  "Honors Human Body Systems",
+  "Dual Enrollment (College Course)",
+  "IB Higher Level (HL) Course",
+  "IB Standard Level (SL) Course",
 ];
 
-export const LANGUAGES = ["Spanish", "French", "Mandarin", "German", "Latin", "Japanese"];
+export const LANGUAGES = [
+  "Spanish","French","Mandarin","Japanese","German",
+  "Arabic","Portuguese","Korean","Italian","Latin",
+  "Hindi","Russian","Farsi","Vietnamese","Tagalog",
+  "ASL (American Sign Language)","Hebrew","Turkish","Polish",
+];
 
 export const LEADERSHIP_ROLES = [
-  { label: "President", score: 90 },
-  { label: "Vice President", score: 80 },
-  { label: "Captain", score: 75 },
-  { label: "Founder", score: 85 },
-  { label: "Treasurer", score: 65 }
+  { label: "Student Body President", score: 10 },
+  { label: "Student Body Vice President", score: 9 },
+  { label: "Class President", score: 8 },
+  { label: "Club President/Founder", score: 9 },
+  { label: "Club Vice President", score: 7 },
+  { label: "Team Captain (Varsity)", score: 8 },
+  { label: "Team Captain (JV)", score: 6 },
+  { label: "NHS President", score: 8 },
+  { label: "NHS Member", score: 5 },
+  { label: "Editor-in-Chief (Newspaper/Yearbook)", score: 8 },
+  { label: "Eagle Scout / Gold Award", score: 9 },
+  { label: "Debate Team Captain", score: 7 },
+  { label: "Orchestra/Band First Chair", score: 7 },
+  { label: "Math Olympiad / Science Olympiad Lead", score: 8 },
+  { label: "Volunteer Coordinator", score: 6 },
+  { label: "Peer Tutor / Mentor", score: 5 },
+  { label: "Research Lab Assistant", score: 7 },
+  { label: "Internship (Competitive)", score: 7 },
+  { label: "Small Business Owner", score: 8 },
+  { label: "Published Author / Researcher", score: 9 },
+  { label: "State/National Competition Winner", score: 10 },
+  { label: "Community Service Leader (100+ hrs)", score: 6 },
+  { label: "Model UN Chair/Secretary General", score: 8 },
+  { label: "DECA/FBLA Officer", score: 7 },
+  { label: "HOSA Officer", score: 7 },
 ];
 
 export const AWARDS = [
-  { label: "National Merit", category: "academic", score: 95 },
-  { label: "State Science Fair", category: "stem", score: 80 },
-  { label: "Art Competition", category: "arts", score: 70 },
-  { label: "All-State Athlete", category: "athletics", score: 75 },
-  { label: "Community Service", category: "community", score: 60 }
+  { label: "National Merit Finalist", score: 10, category: "academic" },
+  { label: "National Merit Semifinalist", score: 9, category: "academic" },
+  { label: "National Merit Commended", score: 7, category: "academic" },
+  { label: "AP Scholar with Distinction", score: 7, category: "academic" },
+  { label: "AP Scholar with Honor", score: 6, category: "academic" },
+  { label: "AP Scholar", score: 5, category: "academic" },
+  { label: "Valedictorian", score: 10, category: "academic" },
+  { label: "Salutatorian", score: 9, category: "academic" },
+  { label: "National Honor Society", score: 5, category: "academic" },
+  { label: "IB Diploma (36+)", score: 8, category: "academic" },
+  { label: "USAMO / USAJMO Qualifier", score: 10, category: "stem" },
+  { label: "AMC 10/12 Top Score (AIME Qualifier)", score: 8, category: "stem" },
+  { label: "Science Olympiad State/National Medal", score: 9, category: "stem" },
+  { label: "ISEF Finalist", score: 10, category: "stem" },
+  { label: "Regeneron STS Scholar", score: 10, category: "stem" },
+  { label: "First Robotics Dean's List", score: 9, category: "stem" },
+  { label: "Congressional App Challenge Winner", score: 9, category: "stem" },
+  { label: "Physics Olympiad (USAPhO)", score: 10, category: "stem" },
+  { label: "Chemistry Olympiad (USNCO)", score: 9, category: "stem" },
+  { label: "Biology Olympiad (USABO)", score: 9, category: "stem" },
+  { label: "National Scholastic Art Gold Key", score: 8, category: "arts" },
+  { label: "National Scholastic Writing Gold Key", score: 8, category: "arts" },
+  { label: "YoungArts Winner", score: 9, category: "arts" },
+  { label: "National Speech & Debate Award", score: 8, category: "arts" },
+  { label: "All-State Athlete", score: 9, category: "athletics" },
+  { label: "All-Region Athlete", score: 7, category: "athletics" },
+  { label: "Team State Championship", score: 8, category: "athletics" },
+  { label: "Presidential Volunteer Service Award (Gold)", score: 7, category: "community" },
+  { label: "Eagle Scout / Gold Award", score: 9, category: "community" },
+  { label: "State/Regional Leadership Award", score: 7, category: "community" },
 ];
 
-export const MAJOR_EC_SUGGESTIONS = {
-  "default": ["Volunteer locally", "Join a club", "Part-time research"],
-  "Computer Science": ["Contribute to open-source", "CS research internship", "Hackathons"],
-  "Engineering": ["Robotics team", "Engineering internship", "Design competitions"],
-  "Biology": ["Lab research", "Science fair project", "Clinical volunteering"],
-  "Business": ["Internship at a startup", "DECA/FBLA", "Start a small business"]
+// Major groups for college filtering — colleges list which groups they're strong for
+export const MAJOR_GROUPS = {
+  "Computer Science": "cs_tech",
+  "Software Engineering": "cs_tech",
+  "Data Science": "cs_tech",
+  "Artificial Intelligence": "cs_tech",
+  "Electrical Engineering": "engineering",
+  "Mechanical Engineering": "engineering",
+  "Civil Engineering": "engineering",
+  "Chemical Engineering": "engineering",
+  "Aerospace Engineering": "engineering",
+  "Biomedical Engineering": "engineering",
+  "Engineering (General)": "engineering",
+  "Mathematics": "math_science",
+  "Statistics": "math_science",
+  "Physics": "math_science",
+  "Biology": "bio_health",
+  "Chemistry": "bio_health",
+  "Neuroscience": "bio_health",
+  "Biochemistry": "bio_health",
+  "Environmental Science": "bio_health",
+  "Pre-Med": "bio_health",
+  "Nursing": "bio_health",
+  "Public Health": "bio_health",
+  "Pharmacy": "bio_health",
+  "Kinesiology": "bio_health",
+  "Economics": "business_econ",
+  "Business Administration": "business_econ",
+  "Finance": "business_econ",
+  "Accounting": "business_econ",
+  "Marketing": "business_econ",
+  "Political Science": "humanities_social",
+  "International Relations": "humanities_social",
+  "Public Policy": "humanities_social",
+  "Law (Pre-Law)": "humanities_social",
+  "History": "humanities_social",
+  "Philosophy": "humanities_social",
+  "English": "humanities_social",
+  "Linguistics": "humanities_social",
+  "Journalism": "humanities_social",
+  "Communications": "humanities_social",
+  "Psychology": "humanities_social",
+  "Sociology": "humanities_social",
+  "Anthropology": "humanities_social",
+  "Education": "humanities_social",
+  "Social Work": "humanities_social",
+  "Architecture": "arts_design",
+  "Urban Planning": "arts_design",
+  "Design": "arts_design",
+  "Film": "arts_design",
+  "Music": "arts_design",
+  "Theater": "arts_design",
+  "Art": "arts_design",
+  "Agriculture": "agriculture",
+  "Veterinary": "agriculture",
+  "Forestry": "agriculture",
+  "Marine Biology": "agriculture",
+  "Undecided": "undecided",
 };
 
-// Minimal placeholder colleges so the UI and scoring can run. These values are illustrative.
+export const MAJOR_EC_SUGGESTIONS = {
+  "Computer Science": ["Competitive Programming Club","Hackathon Participant/Winner","Personal Projects (Apps/Websites)","Robotics Club","AI/ML Research","Open Source Contributor","FIRST Robotics"],
+  "Software Engineering": ["Hackathon Participant/Winner","Personal Projects (Apps/Websites)","Open Source Contributor","Robotics Club","Competitive Programming"],
+  "Data Science": ["Kaggle Competitions","Research Data Projects","Math Club","Statistics Research","Hackathons"],
+  "Artificial Intelligence": ["AI/ML Research","Hackathons","Robotics Club","Personal AI Projects","Research Lab"],
+  "Electrical Engineering": ["Robotics Club","Electronics Club","Ham Radio","Arduino/Raspberry Pi Projects","IEEE Student Chapter"],
+  "Mechanical Engineering": ["Robotics Club","FIRST Robotics","3D Printing Club","Physics Olympiad","Engineering Competitions"],
+  "Aerospace Engineering": ["Rocketry Club","Model Aviation","Robotics","Physics Olympiad","NASA Internship"],
+  "Biomedical Engineering": ["Hospital Volunteering","Research Lab Assistant","HOSA","Science Fair","Red Cross Club"],
+  "Engineering (General)": ["Robotics Club","Science Olympiad","Engineering Club","FIRST Robotics","Physics Olympiad"],
+  "Civil Engineering": ["Architecture Club","Model Bridge Building","Environmental Club","Engineering Competitions"],
+  "Chemical Engineering": ["Research Lab Assistant","Science Fair","Chemistry Club","Science Olympiad"],
+  "Mathematics": ["Math Olympiad (USAMO/AMC)","Math Tutoring","Statistics Research","Coding Club","Math League"],
+  "Statistics": ["Data Science Club","Kaggle","Math League","Research Projects","Coding Club"],
+  "Physics": ["Physics Olympiad","Research Lab","Science Olympiad","Robotics Club","Astronomy Club"],
+  "Biology": ["Research Lab Assistant","Science Fair","Hospital Volunteering","Environmental Club","HOSA"],
+  "Chemistry": ["Research Lab Assistant","Science Fair","Science Olympiad (Chem)","Chemistry Club"],
+  "Neuroscience": ["Research Lab Assistant","Brain Bee Competition","Hospital Volunteering","HOSA","Psychology Club"],
+  "Environmental Science": ["Environmental Club","Conservation Volunteer","Research Projects","Science Olympiad"],
+  "Biochemistry": ["Research Lab Assistant","Science Fair","HOSA","Chemistry Club"],
+  "Pre-Med": ["Hospital/Clinic Volunteering","HOSA","Research Lab Assistant","EMT Certification","Red Cross Club"],
+  "Nursing": ["Hospital Volunteering","CNA Certification","HOSA","Red Cross Club","Community Health Events"],
+  "Public Health": ["Community Health Campaigns","Hospital Volunteering","HOSA","Research","Health Policy Club"],
+  "Pharmacy": ["Hospital Volunteering","HOSA","Research Lab","Science Fair","Health Awareness"],
+  "Kinesiology": ["Sports Team","Athletic Training Volunteer","HOSA","Fitness Instruction","Sports Medicine Shadowing"],
+  "Economics": ["DECA","Stock Market Club","Economics Olympiad","Model UN","Financial Literacy Tutoring"],
+  "Business Administration": ["DECA","FBLA","Entrepreneurship Club","Small Business Owner","Internship"],
+  "Finance": ["Stock Market Club","DECA","Finance Internship","Economics Club","Model UN"],
+  "Accounting": ["DECA","FBLA","Finance Club","Volunteer Tax Prep","Internship"],
+  "Marketing": ["DECA","Social Media Management","Entrepreneurship Club","School Newspaper","Marketing Internship"],
+  "Political Science": ["Model UN","Student Government","Debate Team","Government Internship","Political Campaign Volunteer"],
+  "International Relations": ["Model UN","Foreign Language Club","Cultural Exchange","Debate Team","International Volunteering"],
+  "Public Policy": ["Student Government","Model UN","Debate Team","Community Organizing","Government Internship"],
+  "Law (Pre-Law)": ["Mock Trial","Debate Team","Model UN","Political Internship","Student Government"],
+  "History": ["History Club","Model UN","Debate","Archival Research","Historical Society Volunteer"],
+  "Philosophy": ["Debate Team","Ethics Bowl","Philosophy Club","Writing Club","Model UN"],
+  "English": ["School Newspaper","Literary Magazine","Creative Writing Club","Debate","Tutoring"],
+  "Linguistics": ["Foreign Language Club","Debate","Translation Volunteer","Cultural Exchange","Research"],
+  "Journalism": ["School Newspaper Editor","Broadcast/Podcast","Photography Club","Writing Competitions"],
+  "Communications": ["Student Government","School News Anchor","Debate","Marketing Club","Social Media"],
+  "Psychology": ["Peer Counseling","Mental Health Awareness Club","Research Lab","Hospital Volunteering","HOSA"],
+  "Sociology": ["Community Service","Social Justice Club","Research Projects","Volunteering","Model UN"],
+  "Education": ["Tutoring","Teaching Assistant","After-School Programs","Education Nonprofits","Mentoring"],
+  "Architecture": ["Architecture Club","Urban Planning Projects","CAD Design","Art Portfolio","Engineering Competitions"],
+  "Design": ["Art Portfolio","Design Club","Graphic Design Projects","Photography","Architecture Club"],
+  "Film": ["Film Club","Short Film Director","Yearbook/Media Team","YouTube Channel","School News Anchor"],
+  "Music": ["Orchestra/Band","Jazz Band","Choir","Music Composition","Private Music Teaching"],
+  "Theater": ["School Theater","Drama Club","Improv Club","Community Theater","Technical Theater"],
+  "Art": ["Art Portfolio","Scholastic Art Awards","Art Club","Community Murals","Art Exhibitions"],
+  "Agriculture": ["FFA","4-H Club","Farm Volunteer","Environmental Club","Science Fair (Agri)"],
+  "Veterinary": ["Animal Shelter Volunteer","Vet Clinic Shadow","4-H Club","FFA","Science Fair (Biology)"],
+  "Marine Biology": ["Environmental Club","Beach Cleanup","Marine Research Volunteer","Science Fair","Scuba Certification"],
+  "Undecided": ["Student Government","Debate Team","Volunteering","Sports (Varsity)","Club Leadership","Research"],
+  "default": ["Student Government","Debate Team","Volunteering","Sports (Varsity)","Club Leadership"],
+};
+
+// 90+ colleges with major group strengths
 export const COLLEGES = [
-  { name: "Sample State University", satMid: 1200, gpaMid: 3.4, ecWeight: 0.6, essayWeight: 0.5, strongMajors: ["Business"], isPublic: true, state: "CA", acceptRate: 0.35 },
-  { name: "Tech Institute", satMid: 1450, gpaMid: 3.7, ecWeight: 0.7, essayWeight: 0.6, strongMajors: ["Computer Science","Engineering"], isPublic: false, state: "MA", acceptRate: 0.12 },
-  { name: "Liberal Arts College", satMid: 1280, gpaMid: 3.5, ecWeight: 0.65, essayWeight: 0.7, strongMajors: ["English","History"], isPublic: false, state: "NY", acceptRate: 0.28 }
+  // ── Ivies & Elite Private ──
+  { name: "MIT", satMid: 1580, actMid: 36, gpaMid: 4.17, acceptRate: 0.04, ecWeight: 0.95, essayWeight: 0.90, strongGroups: ["cs_tech","engineering","math_science"], state: "MA", isPublic: false, location: "Urban", website: "mit.edu" },
+  { name: "Harvard", satMid: 1580, actMid: 36, gpaMid: 4.18, acceptRate: 0.03, ecWeight: 0.98, essayWeight: 0.97, strongGroups: ["bio_health","humanities_social","business_econ","math_science"], state: "MA", isPublic: false, location: "Urban", website: "harvard.edu" },
+  { name: "Stanford", satMid: 1570, actMid: 35, gpaMid: 4.18, acceptRate: 0.04, ecWeight: 0.97, essayWeight: 0.95, strongGroups: ["cs_tech","engineering","business_econ","humanities_social"], state: "CA", isPublic: false, location: "Suburban", website: "stanford.edu" },
+  { name: "Princeton", satMid: 1570, actMid: 35, gpaMid: 3.90, acceptRate: 0.04, ecWeight: 0.96, essayWeight: 0.95, strongGroups: ["math_science","humanities_social","engineering","business_econ"], state: "NJ", isPublic: false, location: "Suburban", website: "princeton.edu" },
+  { name: "Yale", satMid: 1560, actMid: 35, gpaMid: 4.10, acceptRate: 0.05, ecWeight: 0.96, essayWeight: 0.97, strongGroups: ["humanities_social","arts_design","bio_health","business_econ"], state: "CT", isPublic: false, location: "Urban", website: "yale.edu" },
+  { name: "Columbia", satMid: 1560, actMid: 35, gpaMid: 4.12, acceptRate: 0.04, ecWeight: 0.94, essayWeight: 0.94, strongGroups: ["humanities_social","engineering","business_econ","cs_tech"], state: "NY", isPublic: false, location: "Urban", website: "columbia.edu" },
+  { name: "UPenn", satMid: 1530, actMid: 35, gpaMid: 3.90, acceptRate: 0.07, ecWeight: 0.93, essayWeight: 0.92, strongGroups: ["business_econ","bio_health","engineering","humanities_social"], state: "PA", isPublic: false, location: "Urban", website: "upenn.edu" },
+  { name: "Brown", satMid: 1530, actMid: 35, gpaMid: 4.05, acceptRate: 0.05, ecWeight: 0.93, essayWeight: 0.94, strongGroups: ["humanities_social","cs_tech","bio_health","arts_design"], state: "RI", isPublic: false, location: "Urban", website: "brown.edu" },
+  { name: "Dartmouth", satMid: 1530, actMid: 34, gpaMid: 3.99, acceptRate: 0.06, ecWeight: 0.92, essayWeight: 0.93, strongGroups: ["business_econ","humanities_social","engineering"], state: "NH", isPublic: false, location: "Rural", website: "dartmouth.edu" },
+  { name: "Cornell", satMid: 1510, actMid: 34, gpaMid: 4.05, acceptRate: 0.07, ecWeight: 0.90, essayWeight: 0.88, strongGroups: ["engineering","bio_health","business_econ","agriculture","cs_tech"], state: "NY", isPublic: false, location: "Suburban", website: "cornell.edu" },
+  // ── T20 ──
+  { name: "Duke", satMid: 1540, actMid: 35, gpaMid: 4.13, acceptRate: 0.06, ecWeight: 0.92, essayWeight: 0.91, strongGroups: ["bio_health","business_econ","humanities_social","engineering"], state: "NC", isPublic: false, location: "Suburban", website: "duke.edu" },
+  { name: "Northwestern", satMid: 1530, actMid: 34, gpaMid: 4.10, acceptRate: 0.07, ecWeight: 0.91, essayWeight: 0.91, strongGroups: ["humanities_social","arts_design","engineering","business_econ"], state: "IL", isPublic: false, location: "Suburban", website: "northwestern.edu" },
+  { name: "Johns Hopkins", satMid: 1540, actMid: 35, gpaMid: 3.92, acceptRate: 0.07, ecWeight: 0.90, essayWeight: 0.89, strongGroups: ["bio_health","engineering","cs_tech","humanities_social"], state: "MD", isPublic: false, location: "Urban", website: "jhu.edu" },
+  { name: "Vanderbilt", satMid: 1530, actMid: 34, gpaMid: 3.83, acceptRate: 0.07, ecWeight: 0.89, essayWeight: 0.89, strongGroups: ["bio_health","business_econ","engineering","humanities_social"], state: "TN", isPublic: false, location: "Urban", website: "vanderbilt.edu" },
+  { name: "Rice", satMid: 1540, actMid: 35, gpaMid: 4.12, acceptRate: 0.08, ecWeight: 0.91, essayWeight: 0.90, strongGroups: ["engineering","math_science","arts_design","cs_tech"], state: "TX", isPublic: false, location: "Urban", website: "rice.edu" },
+  { name: "WashU St. Louis", satMid: 1530, actMid: 34, gpaMid: 4.05, acceptRate: 0.12, ecWeight: 0.88, essayWeight: 0.88, strongGroups: ["business_econ","engineering","bio_health","arts_design"], state: "MO", isPublic: false, location: "Suburban", website: "wustl.edu" },
+  { name: "Notre Dame", satMid: 1510, actMid: 34, gpaMid: 4.06, acceptRate: 0.12, ecWeight: 0.88, essayWeight: 0.87, strongGroups: ["business_econ","engineering","humanities_social"], state: "IN", isPublic: false, location: "Suburban", website: "nd.edu" },
+  { name: "Georgetown", satMid: 1480, actMid: 33, gpaMid: 3.90, acceptRate: 0.12, ecWeight: 0.87, essayWeight: 0.89, strongGroups: ["humanities_social","business_econ","bio_health"], state: "DC", isPublic: false, location: "Urban", website: "georgetown.edu" },
+  { name: "Carnegie Mellon", satMid: 1540, actMid: 35, gpaMid: 3.84, acceptRate: 0.11, ecWeight: 0.88, essayWeight: 0.85, strongGroups: ["cs_tech","engineering","arts_design","business_econ"], state: "PA", isPublic: false, location: "Urban", website: "cmu.edu" },
+  { name: "Emory", satMid: 1480, actMid: 33, gpaMid: 3.90, acceptRate: 0.11, ecWeight: 0.86, essayWeight: 0.87, strongGroups: ["bio_health","business_econ","humanities_social"], state: "GA", isPublic: false, location: "Suburban", website: "emory.edu" },
+  { name: "USC", satMid: 1460, actMid: 33, gpaMid: 3.79, acceptRate: 0.13, ecWeight: 0.85, essayWeight: 0.84, strongGroups: ["arts_design","business_econ","engineering","cs_tech"], state: "CA", isPublic: false, location: "Urban", website: "usc.edu" },
+  { name: "Tufts", satMid: 1480, actMid: 33, gpaMid: 3.92, acceptRate: 0.11, ecWeight: 0.88, essayWeight: 0.90, strongGroups: ["humanities_social","bio_health","engineering","cs_tech"], state: "MA", isPublic: false, location: "Suburban", website: "tufts.edu" },
+  // ── Strong Private (T30-50) ──
+  { name: "NYU", satMid: 1480, actMid: 33, gpaMid: 3.70, acceptRate: 0.13, ecWeight: 0.83, essayWeight: 0.86, strongGroups: ["business_econ","arts_design","humanities_social","cs_tech"], state: "NY", isPublic: false, location: "Urban", website: "nyu.edu" },
+  { name: "Boston University", satMid: 1430, actMid: 33, gpaMid: 3.80, acceptRate: 0.19, ecWeight: 0.80, essayWeight: 0.82, strongGroups: ["bio_health","business_econ","humanities_social","engineering"], state: "MA", isPublic: false, location: "Urban", website: "bu.edu" },
+  { name: "Northeastern", satMid: 1500, actMid: 34, gpaMid: 3.90, acceptRate: 0.07, ecWeight: 0.85, essayWeight: 0.83, strongGroups: ["cs_tech","engineering","business_econ","bio_health"], state: "MA", isPublic: false, location: "Urban", website: "northeastern.edu" },
+  { name: "Tulane", satMid: 1430, actMid: 32, gpaMid: 3.60, acceptRate: 0.13, ecWeight: 0.82, essayWeight: 0.85, strongGroups: ["business_econ","bio_health","humanities_social","arts_design"], state: "LA", isPublic: false, location: "Urban", website: "tulane.edu" },
+  { name: "Wake Forest", satMid: 1430, actMid: 32, gpaMid: 3.80, acceptRate: 0.24, ecWeight: 0.85, essayWeight: 0.88, strongGroups: ["business_econ","humanities_social","bio_health"], state: "NC", isPublic: false, location: "Suburban", website: "wfu.edu" },
+  { name: "Boston College", satMid: 1450, actMid: 33, gpaMid: 3.90, acceptRate: 0.17, ecWeight: 0.84, essayWeight: 0.86, strongGroups: ["business_econ","humanities_social","bio_health","education"], state: "MA", isPublic: false, location: "Suburban", website: "bc.edu" },
+  { name: "Case Western Reserve", satMid: 1500, actMid: 34, gpaMid: 3.85, acceptRate: 0.27, ecWeight: 0.80, essayWeight: 0.78, strongGroups: ["engineering","bio_health","cs_tech","math_science"], state: "OH", isPublic: false, location: "Urban", website: "case.edu" },
+  { name: "Lehigh University", satMid: 1380, actMid: 31, gpaMid: 3.70, acceptRate: 0.39, ecWeight: 0.75, essayWeight: 0.74, strongGroups: ["engineering","business_econ","cs_tech"], state: "PA", isPublic: false, location: "Suburban", website: "lehigh.edu" },
+  { name: "Rensselaer Polytechnic (RPI)", satMid: 1440, actMid: 32, gpaMid: 3.80, acceptRate: 0.55, ecWeight: 0.72, essayWeight: 0.68, strongGroups: ["engineering","cs_tech","math_science"], state: "NY", isPublic: false, location: "Urban", website: "rpi.edu" },
+  { name: "Rochester", satMid: 1470, actMid: 33, gpaMid: 3.80, acceptRate: 0.30, ecWeight: 0.78, essayWeight: 0.80, strongGroups: ["cs_tech","engineering","bio_health","arts_design"], state: "NY", isPublic: false, location: "Urban", website: "rochester.edu" },
+  { name: "George Washington University", satMid: 1370, actMid: 31, gpaMid: 3.70, acceptRate: 0.43, ecWeight: 0.78, essayWeight: 0.80, strongGroups: ["humanities_social","business_econ","bio_health"], state: "DC", isPublic: false, location: "Urban", website: "gwu.edu" },
+  { name: "American University", satMid: 1310, actMid: 30, gpaMid: 3.70, acceptRate: 0.37, ecWeight: 0.76, essayWeight: 0.82, strongGroups: ["humanities_social","business_econ","arts_design"], state: "DC", isPublic: false, location: "Urban", website: "american.edu" },
+  // ── Liberal Arts Colleges ──
+  { name: "Williams College", satMid: 1540, actMid: 35, gpaMid: 4.00, acceptRate: 0.09, ecWeight: 0.92, essayWeight: 0.94, strongGroups: ["humanities_social","math_science","arts_design"], state: "MA", isPublic: false, location: "Rural", website: "williams.edu" },
+  { name: "Amherst College", satMid: 1530, actMid: 35, gpaMid: 4.00, acceptRate: 0.09, ecWeight: 0.92, essayWeight: 0.94, strongGroups: ["humanities_social","math_science"], state: "MA", isPublic: false, location: "Rural", website: "amherst.edu" },
+  { name: "Swarthmore", satMid: 1530, actMid: 35, gpaMid: 3.90, acceptRate: 0.09, ecWeight: 0.91, essayWeight: 0.93, strongGroups: ["humanities_social","math_science","engineering"], state: "PA", isPublic: false, location: "Suburban", website: "swarthmore.edu" },
+  { name: "Wellesley", satMid: 1480, actMid: 33, gpaMid: 3.90, acceptRate: 0.17, ecWeight: 0.90, essayWeight: 0.92, strongGroups: ["humanities_social","math_science","bio_health"], state: "MA", isPublic: false, location: "Suburban", website: "wellesley.edu" },
+  { name: "Pomona College", satMid: 1520, actMid: 35, gpaMid: 3.90, acceptRate: 0.08, ecWeight: 0.91, essayWeight: 0.93, strongGroups: ["humanities_social","math_science","cs_tech"], state: "CA", isPublic: false, location: "Suburban", website: "pomona.edu" },
+  { name: "Bowdoin", satMid: 1490, actMid: 34, gpaMid: 3.90, acceptRate: 0.09, ecWeight: 0.91, essayWeight: 0.93, strongGroups: ["humanities_social","bio_health","arts_design"], state: "ME", isPublic: false, location: "Rural", website: "bowdoin.edu" },
+  { name: "Middlebury", satMid: 1450, actMid: 33, gpaMid: 3.85, acceptRate: 0.15, ecWeight: 0.88, essayWeight: 0.90, strongGroups: ["humanities_social","arts_design","agriculture"], state: "VT", isPublic: false, location: "Rural", website: "middlebury.edu" },
+  { name: "Colby College", satMid: 1430, actMid: 32, gpaMid: 3.80, acceptRate: 0.24, ecWeight: 0.86, essayWeight: 0.88, strongGroups: ["humanities_social","bio_health","arts_design"], state: "ME", isPublic: false, location: "Rural", website: "colby.edu" },
+  { name: "Colgate University", satMid: 1440, actMid: 33, gpaMid: 3.80, acceptRate: 0.24, ecWeight: 0.85, essayWeight: 0.87, strongGroups: ["humanities_social","business_econ","bio_health"], state: "NY", isPublic: false, location: "Rural", website: "colgate.edu" },
+  { name: "Vassar College", satMid: 1440, actMid: 33, gpaMid: 3.80, acceptRate: 0.24, ecWeight: 0.87, essayWeight: 0.91, strongGroups: ["humanities_social","arts_design","math_science"], state: "NY", isPublic: false, location: "Suburban", website: "vassar.edu" },
+  { name: "Harvey Mudd", satMid: 1560, actMid: 36, gpaMid: 4.10, acceptRate: 0.11, ecWeight: 0.88, essayWeight: 0.85, strongGroups: ["cs_tech","engineering","math_science"], state: "CA", isPublic: false, location: "Suburban", website: "hmc.edu" },
+  // ── Top Public Universities ──
+  { name: "UC Berkeley", satMid: 1430, actMid: 33, gpaMid: 4.15, acceptRate: 0.14, ecWeight: 0.82, essayWeight: 0.80, strongGroups: ["cs_tech","engineering","business_econ","humanities_social"], state: "CA", isPublic: true, location: "Urban", website: "berkeley.edu" },
+  { name: "UCLA", satMid: 1420, actMid: 32, gpaMid: 4.15, acceptRate: 0.09, ecWeight: 0.82, essayWeight: 0.80, strongGroups: ["arts_design","bio_health","humanities_social","cs_tech"], state: "CA", isPublic: true, location: "Urban", website: "ucla.edu" },
+  { name: "UMich Ann Arbor", satMid: 1430, actMid: 33, gpaMid: 3.88, acceptRate: 0.18, ecWeight: 0.83, essayWeight: 0.80, strongGroups: ["engineering","business_econ","cs_tech","humanities_social"], state: "MI", isPublic: true, location: "Suburban", website: "umich.edu" },
+  { name: "Georgia Tech", satMid: 1470, actMid: 33, gpaMid: 4.07, acceptRate: 0.17, ecWeight: 0.80, essayWeight: 0.75, strongGroups: ["engineering","cs_tech","math_science","business_econ"], state: "GA", isPublic: true, location: "Urban", website: "gatech.edu" },
+  { name: "UNC Chapel Hill", satMid: 1380, actMid: 31, gpaMid: 4.35, acceptRate: 0.19, ecWeight: 0.80, essayWeight: 0.79, strongGroups: ["humanities_social","business_econ","bio_health","arts_design"], state: "NC", isPublic: true, location: "Suburban", website: "unc.edu" },
+  { name: "UT Austin", satMid: 1350, actMid: 31, gpaMid: 3.82, acceptRate: 0.29, ecWeight: 0.75, essayWeight: 0.74, strongGroups: ["business_econ","engineering","cs_tech","humanities_social"], state: "TX", isPublic: true, location: "Urban", website: "utexas.edu" },
+  { name: "UC San Diego", satMid: 1400, actMid: 32, gpaMid: 4.12, acceptRate: 0.24, ecWeight: 0.75, essayWeight: 0.72, strongGroups: ["bio_health","cs_tech","engineering","math_science"], state: "CA", isPublic: true, location: "Suburban", website: "ucsd.edu" },
+  { name: "UC Santa Barbara", satMid: 1360, actMid: 31, gpaMid: 4.10, acceptRate: 0.29, ecWeight: 0.72, essayWeight: 0.70, strongGroups: ["bio_health","engineering","humanities_social","arts_design"], state: "CA", isPublic: true, location: "Suburban", website: "ucsb.edu" },
+  { name: "UC Irvine", satMid: 1330, actMid: 30, gpaMid: 4.05, acceptRate: 0.27, ecWeight: 0.70, essayWeight: 0.68, strongGroups: ["cs_tech","bio_health","business_econ","engineering"], state: "CA", isPublic: true, location: "Suburban", website: "uci.edu" },
+  { name: "UC Davis", satMid: 1310, actMid: 29, gpaMid: 4.03, acceptRate: 0.39, ecWeight: 0.70, essayWeight: 0.68, strongGroups: ["agriculture","bio_health","engineering","cs_tech"], state: "CA", isPublic: true, location: "Suburban", website: "ucdavis.edu" },
+  { name: "UC Santa Cruz", satMid: 1270, actMid: 28, gpaMid: 3.90, acceptRate: 0.47, ecWeight: 0.65, essayWeight: 0.63, strongGroups: ["cs_tech","bio_health","arts_design","humanities_social"], state: "CA", isPublic: true, location: "Suburban", website: "ucsc.edu" },
+  { name: "UC Riverside", satMid: 1230, actMid: 27, gpaMid: 3.80, acceptRate: 0.57, ecWeight: 0.60, essayWeight: 0.58, strongGroups: ["bio_health","engineering","cs_tech","business_econ"], state: "CA", isPublic: true, location: "Suburban", website: "ucr.edu" },
+  { name: "Virginia Tech", satMid: 1330, actMid: 30, gpaMid: 3.90, acceptRate: 0.57, ecWeight: 0.70, essayWeight: 0.67, strongGroups: ["engineering","cs_tech","business_econ","agriculture"], state: "VA", isPublic: true, location: "Rural", website: "vt.edu" },
+  { name: "UVA", satMid: 1430, actMid: 33, gpaMid: 4.10, acceptRate: 0.19, ecWeight: 0.82, essayWeight: 0.83, strongGroups: ["business_econ","humanities_social","engineering","cs_tech"], state: "VA", isPublic: true, location: "Suburban", website: "virginia.edu" },
+  { name: "William & Mary", satMid: 1370, actMid: 31, gpaMid: 4.00, acceptRate: 0.37, ecWeight: 0.78, essayWeight: 0.80, strongGroups: ["humanities_social","business_econ","bio_health"], state: "VA", isPublic: true, location: "Suburban", website: "wm.edu" },
+  { name: "University of Florida", satMid: 1360, actMid: 31, gpaMid: 4.30, acceptRate: 0.23, ecWeight: 0.75, essayWeight: 0.72, strongGroups: ["engineering","business_econ","bio_health","agriculture"], state: "FL", isPublic: true, location: "Suburban", website: "ufl.edu" },
+  { name: "University of Wisconsin", satMid: 1350, actMid: 30, gpaMid: 3.85, acceptRate: 0.49, ecWeight: 0.72, essayWeight: 0.69, strongGroups: ["engineering","business_econ","bio_health","agriculture"], state: "WI", isPublic: true, location: "Urban", website: "wisc.edu" },
+  { name: "Purdue", satMid: 1330, actMid: 30, gpaMid: 3.70, acceptRate: 0.53, ecWeight: 0.68, essayWeight: 0.65, strongGroups: ["engineering","cs_tech","agriculture","math_science"], state: "IN", isPublic: true, location: "Suburban", website: "purdue.edu" },
+  { name: "Penn State", satMid: 1250, actMid: 28, gpaMid: 3.58, acceptRate: 0.54, ecWeight: 0.65, essayWeight: 0.62, strongGroups: ["engineering","business_econ","humanities_social","agriculture"], state: "PA", isPublic: true, location: "Rural", website: "psu.edu" },
+  { name: "Ohio State", satMid: 1310, actMid: 29, gpaMid: 3.80, acceptRate: 0.54, ecWeight: 0.67, essayWeight: 0.64, strongGroups: ["business_econ","engineering","bio_health","humanities_social"], state: "OH", isPublic: true, location: "Urban", website: "osu.edu" },
+  { name: "Michigan State", satMid: 1230, actMid: 27, gpaMid: 3.60, acceptRate: 0.76, ecWeight: 0.60, essayWeight: 0.57, strongGroups: ["business_econ","bio_health","agriculture","engineering"], state: "MI", isPublic: true, location: "Suburban", website: "msu.edu" },
+  { name: "Minnesota", satMid: 1310, actMid: 29, gpaMid: 3.75, acceptRate: 0.57, ecWeight: 0.67, essayWeight: 0.63, strongGroups: ["engineering","business_econ","cs_tech","bio_health"], state: "MN", isPublic: true, location: "Urban", website: "umn.edu" },
+  { name: "Indiana University", satMid: 1210, actMid: 27, gpaMid: 3.65, acceptRate: 0.80, ecWeight: 0.60, essayWeight: 0.58, strongGroups: ["business_econ","humanities_social","cs_tech"], state: "IN", isPublic: true, location: "Suburban", website: "indiana.edu" },
+  { name: "University of Maryland", satMid: 1390, actMid: 32, gpaMid: 4.10, acceptRate: 0.44, ecWeight: 0.76, essayWeight: 0.73, strongGroups: ["cs_tech","engineering","business_econ","humanities_social"], state: "MD", isPublic: true, location: "Suburban", website: "umd.edu" },
+  { name: "University of Washington", satMid: 1360, actMid: 31, gpaMid: 3.85, acceptRate: 0.49, ecWeight: 0.74, essayWeight: 0.71, strongGroups: ["cs_tech","engineering","bio_health","business_econ"], state: "WA", isPublic: true, location: "Urban", website: "uw.edu" },
+  { name: "University of Colorado Boulder", satMid: 1240, actMid: 28, gpaMid: 3.65, acceptRate: 0.80, ecWeight: 0.62, essayWeight: 0.60, strongGroups: ["engineering","cs_tech","business_econ","arts_design"], state: "CO", isPublic: true, location: "Suburban", website: "colorado.edu" },
+  { name: "Arizona State", satMid: 1180, actMid: 25, gpaMid: 3.50, acceptRate: 0.88, ecWeight: 0.55, essayWeight: 0.52, strongGroups: ["business_econ","engineering","cs_tech","humanities_social"], state: "AZ", isPublic: true, location: "Suburban", website: "asu.edu" },
+  { name: "University of Arizona", satMid: 1180, actMid: 25, gpaMid: 3.45, acceptRate: 0.84, ecWeight: 0.53, essayWeight: 0.50, strongGroups: ["bio_health","business_econ","engineering","arts_design"], state: "AZ", isPublic: true, location: "Suburban", website: "arizona.edu" },
+  { name: "Colorado State", satMid: 1160, actMid: 25, gpaMid: 3.55, acceptRate: 0.90, ecWeight: 0.52, essayWeight: 0.50, strongGroups: ["agriculture","bio_health","engineering","business_econ"], state: "CO", isPublic: true, location: "Suburban", website: "colostate.edu" },
+  // ── Specialized / Strong Programs ──
+  { name: "Babson College", satMid: 1350, actMid: 30, gpaMid: 3.70, acceptRate: 0.24, ecWeight: 0.82, essayWeight: 0.80, strongGroups: ["business_econ"], state: "MA", isPublic: false, location: "Suburban", website: "babson.edu" },
+  { name: "Bentley University", satMid: 1280, actMid: 29, gpaMid: 3.60, acceptRate: 0.44, ecWeight: 0.76, essayWeight: 0.74, strongGroups: ["business_econ","cs_tech"], state: "MA", isPublic: false, location: "Suburban", website: "bentley.edu" },
+  { name: "Stevens Institute of Technology", satMid: 1420, actMid: 32, gpaMid: 3.80, acceptRate: 0.40, ecWeight: 0.74, essayWeight: 0.70, strongGroups: ["engineering","cs_tech","math_science"], state: "NJ", isPublic: false, location: "Urban", website: "stevens.edu" },
+  { name: "Worcester Polytechnic (WPI)", satMid: 1400, actMid: 31, gpaMid: 3.80, acceptRate: 0.56, ecWeight: 0.72, essayWeight: 0.68, strongGroups: ["engineering","cs_tech","math_science"], state: "MA", isPublic: false, location: "Suburban", website: "wpi.edu" },
+  { name: "Drexel University", satMid: 1300, actMid: 29, gpaMid: 3.65, acceptRate: 0.75, ecWeight: 0.68, essayWeight: 0.65, strongGroups: ["engineering","cs_tech","business_econ","bio_health"], state: "PA", isPublic: false, location: "Urban", website: "drexel.edu" },
+  { name: "George Mason", satMid: 1230, actMid: 27, gpaMid: 3.70, acceptRate: 0.83, ecWeight: 0.60, essayWeight: 0.58, strongGroups: ["cs_tech","business_econ","humanities_social","engineering"], state: "VA", isPublic: true, location: "Suburban", website: "gmu.edu" },
+  { name: "Fordham University", satMid: 1320, actMid: 30, gpaMid: 3.70, acceptRate: 0.54, ecWeight: 0.74, essayWeight: 0.78, strongGroups: ["business_econ","humanities_social","bio_health"], state: "NY", isPublic: false, location: "Urban", website: "fordham.edu" },
+  { name: "Santa Clara University", satMid: 1340, actMid: 30, gpaMid: 3.75, acceptRate: 0.49, ecWeight: 0.76, essayWeight: 0.77, strongGroups: ["business_econ","engineering","cs_tech","humanities_social"], state: "CA", isPublic: false, location: "Suburban", website: "scu.edu" },
+  { name: "University of San Diego", satMid: 1230, actMid: 27, gpaMid: 3.70, acceptRate: 0.52, ecWeight: 0.72, essayWeight: 0.74, strongGroups: ["business_econ","bio_health","humanities_social"], state: "CA", isPublic: false, location: "Urban", website: "sandiego.edu" },
+  { name: "Chapman University", satMid: 1250, actMid: 28, gpaMid: 3.65, acceptRate: 0.57, ecWeight: 0.74, essayWeight: 0.78, strongGroups: ["arts_design","business_econ","bio_health","humanities_social"], state: "CA", isPublic: false, location: "Suburban", website: "chapman.edu" },
+  { name: "Loyola Marymount (LMU)", satMid: 1280, actMid: 29, gpaMid: 3.70, acceptRate: 0.49, ecWeight: 0.74, essayWeight: 0.76, strongGroups: ["business_econ","arts_design","humanities_social","bio_health"], state: "CA", isPublic: false, location: "Urban", website: "lmu.edu" },
+  { name: "Pepperdine", satMid: 1300, actMid: 29, gpaMid: 3.80, acceptRate: 0.37, ecWeight: 0.76, essayWeight: 0.80, strongGroups: ["business_econ","humanities_social","arts_design"], state: "CA", isPublic: false, location: "Suburban", website: "pepperdine.edu" },
+  { name: "University of Denver", satMid: 1240, actMid: 28, gpaMid: 3.65, acceptRate: 0.58, ecWeight: 0.72, essayWeight: 0.74, strongGroups: ["business_econ","humanities_social","cs_tech"], state: "CO", isPublic: false, location: "Urban", website: "du.edu" },
+  { name: "Villanova", satMid: 1380, actMid: 32, gpaMid: 3.90, acceptRate: 0.28, ecWeight: 0.80, essayWeight: 0.82, strongGroups: ["business_econ","engineering","humanities_social","bio_health"], state: "PA", isPublic: false, location: "Suburban", website: "villanova.edu" },
+  { name: "Marquette University", satMid: 1230, actMid: 27, gpaMid: 3.65, acceptRate: 0.78, ecWeight: 0.65, essayWeight: 0.68, strongGroups: ["business_econ","bio_health","humanities_social","engineering"], state: "WI", isPublic: false, location: "Urban", website: "marquette.edu" },
+  { name: "University of Pittsburgh", satMid: 1360, actMid: 31, gpaMid: 3.90, acceptRate: 0.52, ecWeight: 0.74, essayWeight: 0.71, strongGroups: ["bio_health","business_econ","engineering","humanities_social"], state: "PA", isPublic: true, location: "Urban", website: "pitt.edu" },
+  { name: "Temple University", satMid: 1180, actMid: 26, gpaMid: 3.55, acceptRate: 0.65, ecWeight: 0.60, essayWeight: 0.58, strongGroups: ["business_econ","arts_design","bio_health","humanities_social"], state: "PA", isPublic: true, location: "Urban", website: "temple.edu" },
+  { name: "Syracuse University", satMid: 1270, actMid: 28, gpaMid: 3.60, acceptRate: 0.60, ecWeight: 0.68, essayWeight: 0.72, strongGroups: ["humanities_social","arts_design","business_econ","cs_tech"], state: "NY", isPublic: false, location: "Urban", website: "syracuse.edu" },
+  { name: "Rutgers University", satMid: 1300, actMid: 29, gpaMid: 3.90, acceptRate: 0.67, ecWeight: 0.66, essayWeight: 0.62, strongGroups: ["engineering","bio_health","business_econ","humanities_social"], state: "NJ", isPublic: true, location: "Suburban", website: "rutgers.edu" },
+  { name: "University of Connecticut", satMid: 1290, actMid: 29, gpaMid: 3.85, acceptRate: 0.54, ecWeight: 0.68, essayWeight: 0.65, strongGroups: ["business_econ","engineering","bio_health","humanities_social"], state: "CT", isPublic: true, location: "Suburban", website: "uconn.edu" },
+  { name: "Iowa State", satMid: 1180, actMid: 25, gpaMid: 3.55, acceptRate: 0.88, ecWeight: 0.55, essayWeight: 0.52, strongGroups: ["engineering","agriculture","cs_tech","business_econ"], state: "IA", isPublic: true, location: "Suburban", website: "iastate.edu" },
+  { name: "Kansas State", satMid: 1140, actMid: 24, gpaMid: 3.40, acceptRate: 0.94, ecWeight: 0.50, essayWeight: 0.48, strongGroups: ["agriculture","engineering","business_econ","bio_health"], state: "KS", isPublic: true, location: "Suburban", website: "k-state.edu" },
+  { name: "Texas A&M", satMid: 1270, actMid: 29, gpaMid: 3.90, acceptRate: 0.63, ecWeight: 0.68, essayWeight: 0.63, strongGroups: ["engineering","agriculture","business_econ","cs_tech"], state: "TX", isPublic: true, location: "Suburban", website: "tamu.edu" },
+  { name: "University of Houston", satMid: 1210, actMid: 26, gpaMid: 3.60, acceptRate: 0.65, ecWeight: 0.62, essayWeight: 0.60, strongGroups: ["engineering","business_econ","cs_tech","bio_health"], state: "TX", isPublic: true, location: "Urban", website: "uh.edu" },
+  { name: "Florida State", satMid: 1280, actMid: 29, gpaMid: 4.00, acceptRate: 0.25, ecWeight: 0.70, essayWeight: 0.68, strongGroups: ["business_econ","bio_health","humanities_social","arts_design"], state: "FL", isPublic: true, location: "Suburban", website: "fsu.edu" },
+  { name: "University of Miami", satMid: 1370, actMid: 31, gpaMid: 3.80, acceptRate: 0.27, ecWeight: 0.78, essayWeight: 0.80, strongGroups: ["business_econ","bio_health","arts_design","humanities_social"], state: "FL", isPublic: false, location: "Urban", website: "miami.edu" },
+  { name: "University of South Carolina", satMid: 1210, actMid: 26, gpaMid: 3.80, acceptRate: 0.63, ecWeight: 0.62, essayWeight: 0.60, strongGroups: ["business_econ","humanities_social","bio_health"], state: "SC", isPublic: true, location: "Urban", website: "sc.edu" },
+  { name: "University of Oregon", satMid: 1160, actMid: 25, gpaMid: 3.55, acceptRate: 0.83, ecWeight: 0.58, essayWeight: 0.60, strongGroups: ["business_econ","humanities_social","arts_design","bio_health"], state: "OR", isPublic: true, location: "Suburban", website: "uoregon.edu" },
 ];
-        `You are an experienced college admissions counselor. Read this college essay and give:
-1. A score out of 10
-2. What the essay does well (2-3 sentences)
-3. What could be improved (2-3 sentences)
-4. An overall verdict (1 sentence)
-
-Format your response exactly like this:
-SCORE: X/10
-STRENGTHS: ...
-IMPROVEMENTS: ...
-VERDICT: ...`,
-        profile.essay
-      );
-      const scoreMatch = res.match(/SCORE:\s*(\d+)/);
-      const strengthsMatch = res.match(/STRENGTHS:\s*(.+?)(?=IMPROVEMENTS:)/s);
-      const improvementsMatch = res.match(/IMPROVEMENTS:\s*(.+?)(?=VERDICT:)/s);
-      const verdictMatch = res.match(/VERDICT:\s*(.+)/s);
-      update("essayScore", scoreMatch ? parseInt(scoreMatch[1]) : 7);
-      update("essayFeedback", {
-        strengths: strengthsMatch ? strengthsMatch[1].trim() : "",
-        improvements: improvementsMatch ? improvementsMatch[1].trim() : "",
-        verdict: verdictMatch ? verdictMatch[1].trim() : res,
-      });
-    } catch (e) {
-      update("essayScore", 0);
-      update("essayFeedback", { strengths: "", improvements: "", verdict: "Error contacting AI. Check your API key." });
-    }
-    setLoading(false);
-  }
-
-  async function scoreECs() {
-    const filled = profile.ecList.filter(e => e.activity.trim());
-    if (filled.length === 0) { update("ecScore", 5); setStep(4); return; }
-    setLoading(true);
-    setLoadingMsg("Scoring your extracurriculars with Llama 3...");
-    try {
-      const ecText = filled.map((e, i) =>
-        `${i+1}. ${e.activity} | ${e.years} yr(s) | Role: ${e.role} | Related to ${profile.major}: ${e.relatedToMajor ? "Yes" : "No"}`
-      ).join("\n");
-      const res = await groqChat(
-        `You are a college admissions expert. The student is applying for ${profile.major}. Score their extracurricular profile and give:
-1. A score out of 10 (weight major-relevant activities higher)
-2. What stands out positively (2-3 sentences)
-3. What is missing or could be stronger (2-3 sentences)
-
-Format exactly like this:
-SCORE: X/10
-STRENGTHS: ...
-IMPROVEMENTS: ...`,
-        ecText
-      );
-      const scoreMatch = res.match(/SCORE:\s*(\d+)/);
-      const strengthsMatch = res.match(/STRENGTHS:\s*(.+?)(?=IMPROVEMENTS:)/s);
-      const improvementsMatch = res.match(/IMPROVEMENTS:\s*(.+)/s);
-      update("ecScore", scoreMatch ? parseInt(scoreMatch[1]) : 6);
-      update("ecFeedback", {
-        strengths: strengthsMatch ? strengthsMatch[1].trim() : "",
-        improvements: improvementsMatch ? improvementsMatch[1].trim() : "",
-      });
-    } catch (e) {
-      update("ecScore", 5);
-      update("ecFeedback", { strengths: "", improvements: "Error contacting AI." });
-    }
-    setLoading(false);
-    setStep(4);
-  }
-
-  function compute() {
-    const res = COLLEGES.map(c => scoreCollege(c, profile)).sort((a, b) => b.pct - a.pct);
-    setResults(res);
-    setStep(5);
-  }
-
-  const ecSuggestions = getMajorECSuggestions();
-
-  return (
-    <div style={s.page}>
-      <div style={s.wrap}>
-
-        <div style={{ textAlign: "center", marginBottom: 36 }}>
-          <h1 style={{ fontSize: 30, fontWeight: 800, margin: 0, color: "#1a1a2e", letterSpacing: -0.5 }}>
-            🎓 US College Predictor
-          </h1>
-          <p style={{ color: "#888", marginTop: 8, fontSize: 15 }}>
-            AI-powered admission predictions for 33 US universities
-          </p>
-        </div>
-
-        {/* Progress bar */}
-        <div style={{ display: "flex", gap: 6, marginBottom: 32 }}>
-          {STEPS.map((label, i) => (
-            <div key={label} style={{ flex: 1, textAlign: "center" }}>
-              <div style={{ height: 4, borderRadius: 2, marginBottom: 5, background: i <= step ? "#6c63ff" : "#ddd" }} />
-              <span style={{ fontSize: 10, color: i <= step ? "#6c63ff" : "#aaa", fontWeight: 600 }}>{label}</span>
-            </div>
-          ))}
-        </div>
-
-        {/* ── STEP 0: School Info ── */}
-        {step === 0 && (
-          <div style={s.card}>
-            <h2 style={s.h2}>Your High School</h2>
-            <p style={{ fontSize: 13, color: "#888", marginTop: -8, marginBottom: 20 }}>
-              This helps us account for school competitiveness and geographic context.
-            </p>
-
-            <div style={{ marginBottom: 16 }}>
-              <label style={s.label}>High School Name</label>
-              <input style={s.input} placeholder="e.g. Thomas Jefferson High School"
-                value={profile.hsName} onChange={e => update("hsName", e.target.value)} />
-            </div>
-
-            <div style={s.row}>
-              <div style={{ flex: 2 }}>
-                <label style={s.label}>City / Town</label>
-                <input style={s.input} placeholder="e.g. Alexandria"
-                  value={profile.hsCity} onChange={e => update("hsCity", e.target.value)} />
-              </div>
-              <div style={{ flex: 1 }}>
-                <label style={s.label}>State</label>
-                <select value={profile.hsState} onChange={e => update("hsState", e.target.value)}
-                  style={{ ...s.input, marginTop: 6 }}>
-                  <option value="">Select...</option>
-                  {US_STATES.map(st => <option key={st} value={st}>{st}</option>)}
-                </select>
-              </div>
-            </div>
-
-            <div style={{ marginBottom: 20 }}>
-              <label style={s.label}>High School Type</label>
-              <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
-                {[
-                  { val: "public", label: "🏫 Public" },
-                  { val: "private", label: "🏛️ Private" },
-                  { val: "charter", label: "📚 Charter" },
-                  { val: "magnet", label: "🔬 Magnet / STEM" },
-                  { val: "boarding", label: "🎒 Boarding" },
-                ].map(t => (
-                  <button key={t.val} onClick={() => update("hsType", t.val)} style={{
-                    flex: 1, padding: "9px 6px", borderRadius: 8, fontSize: 12, fontWeight: 600,
-                    border: `2px solid ${profile.hsType === t.val ? "#6c63ff" : "#ddd"}`,
-                    background: profile.hsType === t.val ? "#6c63ff" : "#fff",
-                    color: profile.hsType === t.val ? "#fff" : "#555", cursor: "pointer"
-                  }}>{t.label}</button>
-                ))}
-              </div>
-            </div>
-
-            <div style={{ background: "#f0eeff", borderRadius: 10, padding: 14, marginBottom: 16 }}>
-              <p style={{ margin: 0, fontSize: 12, color: "#5b52cc", lineHeight: 1.6 }}>
-                <strong>Why this matters:</strong> Admissions officers consider your school's context.
-                A 4.0 from a highly competitive magnet school or a city like Palo Alto or NYC carries
-                different weight than the same GPA from a rural public school. We adjust your chances accordingly.
-              </p>
-            </div>
-
-            <PrimaryBtn onClick={() => setStep(1)}>Next: Scores & GPA →</PrimaryBtn>
-          </div>
-        )}
-
-        {/* ── STEP 1: Scores & GPA ── */}
-        {step === 1 && (
-          <div style={s.card}>
-            <h2 style={s.h2}>Scores & GPA</h2>
-
-            <div style={{ marginBottom: 20 }}>
-              <label style={s.label}>Intended Major</label>
-              <select value={profile.major} onChange={e => update("major", e.target.value)}
-                style={{ ...s.input, marginTop: 6 }}>
-                {MAJORS.map(m => <option key={m}>{m}</option>)}
-              </select>
-            </div>
-
-            <div style={{ display: "flex", gap: 10, marginBottom: 20 }}>
-              {["SAT", "ACT"].map(t => (
-                <button key={t} onClick={() => setTestType(t)} style={{
-                  flex: 1, padding: "9px 0", borderRadius: 8, fontSize: 14, fontWeight: 600,
-                  border: `2px solid ${testType === t ? "#6c63ff" : "#ddd"}`,
-                  background: testType === t ? "#6c63ff" : "#fff",
-                  color: testType === t ? "#fff" : "#555", cursor: "pointer"
-                }}>{t}</button>
-              ))}
-            </div>
-
-            {testType === "SAT"
-              ? <SliderRow label="SAT Score" value={profile.sat} min={400} max={1600} step={10} onChange={v => update("sat", v)} />
-              : <SliderRow label="ACT Score" value={profile.act} min={1} max={36} step={1} onChange={v => update("act", v)} />
-            }
-
-            <SliderRow label="Unweighted GPA (out of 4.0)" value={profile.gpa} min={1.0} max={4.0} step={0.05} onChange={v => update("gpa", v)} />
-            <SliderRow label="Weighted GPA (out of 5.0)" value={profile.weightedGpa} min={1.0} max={5.0} step={0.05} onChange={v => update("weightedGpa", v)} />
-
-            <SecBtn onClick={() => setStep(0)}>← Back</SecBtn>
-            <PrimaryBtn onClick={() => setStep(2)}>Next: Courses →</PrimaryBtn>
-          </div>
-        )}
-
-        {/* ── STEP 2: Courses ── */}
-        {step === 2 && (
-          <div style={s.card}>
-            <h2 style={s.h2}>Courses & Languages</h2>
-
-            <SectionLabel count={profile.apCourses.length}>AP Courses</SectionLabel>
-            <TagCloud items={AP_COURSES} selected={profile.apCourses}
-              onToggle={c => toggleString("apCourses", c)} />
-
-            <SectionLabel count={profile.honorsCourses.length}>Honors Courses</SectionLabel>
-            <TagCloud items={HONORS_COURSES} selected={profile.honorsCourses}
-              onToggle={c => toggleString("honorsCourses", c)} />
-
-            <SectionLabel count={profile.majorRelatedCourses.length}>
-              Courses Related to {profile.major}
-            </SectionLabel>
-            <p style={{ fontSize: 12, color: "#888", marginTop: -8, marginBottom: 10 }}>
-              List any additional courses at your school directly related to your intended major.
-            </p>
-            {profile.majorRelatedCourses.map((c, i) => (
-              <div key={i} style={{ display: "flex", gap: 8, marginBottom: 8 }}>
-                <input style={{ ...s.input, marginTop: 0 }}
-                  placeholder={`e.g. Intro to ${profile.major}, Research Methods...`}
-                  value={c} onChange={e => {
-                    const arr = [...profile.majorRelatedCourses];
-                    arr[i] = e.target.value;
-                    update("majorRelatedCourses", arr);
-                  }} />
-                <button onClick={() => update("majorRelatedCourses", profile.majorRelatedCourses.filter((_, j) => j !== i))}
-                  style={{ padding: "0 12px", borderRadius: 8, border: "none", background: "#fee2e2", color: "#dc2626", cursor: "pointer", marginTop: 0, flexShrink: 0 }}>✕</button>
-              </div>
-            ))}
-            <button onClick={() => update("majorRelatedCourses", [...profile.majorRelatedCourses, ""])}
-              style={{ fontSize: 13, color: "#6c63ff", background: "none", border: "none", cursor: "pointer", padding: "4px 0" }}>
-              + Add course
-            </button>
-
-            <div style={{ marginTop: 24 }}>
-              <SectionLabel count={profile.languages.length}>Foreign Languages</SectionLabel>
-              <p style={{ fontSize: 12, color: "#888", marginTop: -8, marginBottom: 10 }}>
-                UC schools require 2+ years. Select all languages you study or have studied.
-              </p>
-              <TagCloud items={LANGUAGES} selected={profile.languages}
-                onToggle={l => toggleString("languages", l)} color="#0891b2" />
-
-              {profile.languages.length > 0 && (
-                <div style={{ marginTop: 12 }}>
-                  <p style={{ ...s.label, marginBottom: 10 }}>Years studied per language</p>
-                  {profile.languages.map(lang => (
-                    <div key={lang} style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
-                      <span style={{ fontSize: 13, minWidth: 100, color: "#333" }}>{lang}</span>
-                      <input type="number" min={1} max={8}
-                        value={profile.languageYears[lang] || 1}
-                        onChange={e => update("languageYears", { ...profile.languageYears, [lang]: parseInt(e.target.value) })}
-                        style={{ ...s.input, width: 70, marginTop: 0 }} />
-                      <span style={{ fontSize: 12, color: "#888" }}>years</span>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            <SecBtn onClick={() => setStep(1)}>← Back</SecBtn>
-            <PrimaryBtn onClick={() => setStep(3)}>Next: Activities →</PrimaryBtn>
-          </div>
-        )}
-
-        {/* ── STEP 3: Activities ── */}
-        {step === 3 && (
-          <div style={s.card}>
-            <h2 style={s.h2}>Leadership, Activities & Awards</h2>
-
-            <SectionLabel count={profile.leadershipRoles.length}>Leadership Roles</SectionLabel>
-            <TagCloud items={LEADERSHIP_ROLES} selected={profile.leadershipRoles}
-              onToggle={toggleLeadership} />
-
-            <div style={{ marginTop: 8 }}>
-              <SectionLabel count={profile.awards.length}>Awards & Honors</SectionLabel>
-              {["academic", "stem", "arts", "athletics", "community"].map(cat => (
-                <div key={cat} style={{ marginBottom: 16 }}>
-                  <p style={{ fontSize: 12, color: "#888", fontWeight: 700, textTransform: "uppercase", marginBottom: 8 }}>{cat}</p>
-                  <TagCloud
-                    items={AWARDS.filter(a => a.category === cat)}
-                    selected={profile.awards}
-                    onToggle={toggleAward}
-                    color="#7c3aed"
-                  />
-                </div>
-              ))}
-            </div>
-
-            <div style={{ marginTop: 8 }}>
-              <SectionLabel>Extracurricular Activities</SectionLabel>
-
-              <div style={{ background: "#f0eeff", borderRadius: 10, padding: 12, marginBottom: 16 }}>
-                <p style={{ margin: "0 0 8px", fontSize: 12, fontWeight: 700, color: "#5b52cc" }}>
-                  💡 Suggested ECs for {profile.major}
-                </p>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-                  {ecSuggestions.map(s2 => (
-                    <button key={s2} onClick={() => {
-                      const exists = profile.ecList.find(e => e.activity === s2);
-                      if (!exists) {
-                        update("ecList", [...profile.ecList, { activity: s2, years: 1, role: "Member", relatedToMajor: true }]);
-                      }
-                    }} style={{
-                      padding: "4px 10px", borderRadius: 14, fontSize: 12, cursor: "pointer",
-                      border: "1px dashed #a78bfa", background: "#faf5ff", color: "#7c3aed"
-                    }}>+ {s2}</button>
-                  ))}
-                </div>
-              </div>
-
-              {profile.ecList.map((ec, i) => (
-                <div key={i} style={{ background: "#f9f9f9", borderRadius: 10, padding: 14, marginBottom: 10 }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-                    <span style={{ fontSize: 13, fontWeight: 600, color: "#333" }}>Activity {i + 1}</span>
-                    {profile.ecList.length > 1 && (
-                      <button onClick={() => update("ecList", profile.ecList.filter((_, j) => j !== i))}
-                        style={{ background: "#fee2e2", border: "none", borderRadius: 6, padding: "3px 8px", color: "#dc2626", cursor: "pointer", fontSize: 12 }}>Remove</button>
-                    )}
-                  </div>
-                  <div style={{ marginBottom: 8 }}>
-                    <label style={{ fontSize: 12, color: "#888" }}>Activity / Club / Sport</label>
-                    <input style={s.input} placeholder="e.g. Varsity Soccer, Robotics Club, Research Lab"
-                      value={ec.activity} onChange={e => updateEc(i, "activity", e.target.value)} />
-                  </div>
-                  <div style={{ display: "flex", gap: 10, marginBottom: 8 }}>
-                    <div style={{ flex: 1 }}>
-                      <label style={{ fontSize: 12, color: "#888" }}>Years</label>
-                      <input type="number" min={1} max={4} style={s.input}
-                        value={ec.years} onChange={e => updateEc(i, "years", parseInt(e.target.value))} />
-                    </div>
-                    <div style={{ flex: 2 }}>
-                      <label style={{ fontSize: 12, color: "#888" }}>Your Role</label>
-                      <input style={s.input} placeholder="e.g. Member, Captain, Founder, Lead"
-                        value={ec.role} onChange={e => updateEc(i, "role", e.target.value)} />
-                    </div>
-                  </div>
-                  <label style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer", fontSize: 13 }}>
-                    <input type="checkbox" checked={ec.relatedToMajor}
-                      onChange={e => updateEc(i, "relatedToMajor", e.target.checked)} />
-                    <span style={{ color: "#555" }}>Related to my intended major ({profile.major})</span>
-                  </label>
-                </div>
-              ))}
-
-              <button onClick={() => update("ecList", [...profile.ecList, { activity: "", years: 1, role: "", relatedToMajor: false }])}
-                style={{ fontSize: 13, color: "#6c63ff", background: "none", border: "none", cursor: "pointer", padding: "4px 0" }}>
-                + Add another activity
-              </button>
-            </div>
-
-            {profile.ecFeedback && (
-              <div style={{ marginTop: 16, borderRadius: 12, overflow: "hidden", border: "1px solid #e0e0e0" }}>
-                <div style={{ background: "#6c63ff", padding: "12px 16px", display: "flex", justifyContent: "space-between" }}>
-                  <span style={{ color: "#fff", fontWeight: 700 }}>EC Score</span>
-                  <span style={{ color: "#fff", fontWeight: 800, fontSize: 20 }}>{profile.ecScore}/10</span>
-                </div>
-                <div style={{ background: "#f9f9f9", padding: 16 }}>
-                  {profile.ecFeedback.strengths && <p style={{ margin: "0 0 10px", fontSize: 13, color: "#333" }}><strong style={{ color: "#27ae60" }}>✅ Strengths:</strong> {profile.ecFeedback.strengths}</p>}
-                  {profile.ecFeedback.improvements && <p style={{ margin: 0, fontSize: 13, color: "#333" }}><strong style={{ color: "#e67e22" }}>⚠️ Improvements:</strong> {profile.ecFeedback.improvements}</p>}
-                </div>
-              </div>
-            )}
-
-            <SecBtn onClick={() => setStep(2)}>← Back</SecBtn>
-            <PrimaryBtn onClick={scoreECs} disabled={loading}>
-              {loading ? loadingMsg : "Score My ECs with AI →"}
-            </PrimaryBtn>
-          </div>
-        )}
-
-        {/* ── STEP 4: Essay ── */}
-        {step === 4 && (
-          <div style={s.card}>
-            <h2 style={s.h2}>College Essay</h2>
-            <p style={{ fontSize: 13, color: "#888", marginTop: -8, marginBottom: 16 }}>
-              Paste your Common App personal statement or any college essay below.
-            </p>
-
-            <textarea rows={12} placeholder="Paste your essay here (minimum 100 characters)..."
-              value={profile.essay} onChange={e => update("essay", e.target.value)}
-              style={{ ...s.input, resize: "vertical", lineHeight: 1.6 }} />
-
-            {profile.essayFeedback && (
-              <div style={{ marginTop: 16, borderRadius: 12, overflow: "hidden", border: "1px solid #e0e0e0" }}>
-                <div style={{ background: "#6c63ff", padding: "12px 16px", display: "flex", justifyContent: "space-between" }}>
-                  <span style={{ color: "#fff", fontWeight: 700 }}>Essay Grade</span>
-                  <span style={{ color: "#fff", fontWeight: 800, fontSize: 20 }}>{profile.essayScore}/10</span>
-                </div>
-                <div style={{ background: "#f9f9f9", padding: 16 }}>
-                  {profile.essayFeedback.strengths && <div style={{ marginBottom: 12 }}><p style={{ margin: "0 0 4px", fontSize: 12, fontWeight: 700, color: "#27ae60" }}>✅ STRENGTHS</p><p style={{ margin: 0, fontSize: 13, color: "#333", lineHeight: 1.6 }}>{profile.essayFeedback.strengths}</p></div>}
-                  {profile.essayFeedback.improvements && <div style={{ marginBottom: 12 }}><p style={{ margin: "0 0 4px", fontSize: 12, fontWeight: 700, color: "#e67e22" }}>⚠️ IMPROVEMENTS</p><p style={{ margin: 0, fontSize: 13, color: "#333", lineHeight: 1.6 }}>{profile.essayFeedback.improvements}</p></div>}
-                  {profile.essayFeedback.verdict && <div><p style={{ margin: "0 0 4px", fontSize: 12, fontWeight: 700, color: "#6c63ff" }}>🎯 VERDICT</p><p style={{ margin: 0, fontSize: 13, color: "#333", lineHeight: 1.6 }}>{profile.essayFeedback.verdict}</p></div>}
-                </div>
-              </div>
-            )}
-
-            <SecBtn onClick={() => setStep(3)}>← Back</SecBtn>
-            <PrimaryBtn onClick={scoreEssay} disabled={loading || profile.essay.length < 100}>
-              {loading ? loadingMsg : "Grade My Essay with AI ✍️"}
-            </PrimaryBtn>
-            <PrimaryBtn onClick={compute} disabled={!profile.essayScore}>
-              {profile.essayScore ? "Predict My Colleges 🚀" : "Grade essay first"}
-            </PrimaryBtn>
-            <button onClick={compute} style={{ width: "100%", background: "none", border: "none", color: "#aaa", fontSize: 13, cursor: "pointer", marginTop: 8, padding: "8px 0" }}>
-              Skip essay → predict anyway
-            </button>
-          </div>
-        )}
-
-        {/* ── STEP 5: Results ── */}
-        {step === 5 && results && (
-          <>
-            <div style={{ background: "#fff", borderRadius: 16, padding: 20, marginBottom: 20, boxShadow: "0 2px 12px rgba(0,0,0,0.07)" }}>
-              <p style={{ margin: "0 0 10px", fontSize: 13, color: "#666", fontWeight: 600 }}>Your Profile Summary</p>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                {[
-                  ["School", profile.hsName || "—"],
-                  ["City", `${profile.hsCity || "—"}, ${profile.hsState || "—"}`],
-                  ["Type", profile.hsType],
-                  ["Major", profile.major],
-                  [testType, testType === "SAT" ? profile.sat : profile.act],
-                  ["UW GPA", profile.gpa],
-                  ["W GPA", profile.weightedGpa],
-                  ["APs", profile.apCourses.length],
-                  ["Honors", profile.honorsCourses.length],
-                  ["Awards", profile.awards.length],
-                  ["Languages", profile.languages.length],
-                  ["EC Score", `${profile.ecScore || "?"}/10`],
-                  ["Essay", `${profile.essayScore || "?"}/10`],
-                ].map(([k, v]) => (
-                  <div key={k} style={{ background: "#f4f5fb", borderRadius: 8, padding: "6px 12px" }}>
-                    <span style={{ fontSize: 11, color: "#888" }}>{k} </span>
-                    <span style={{ fontSize: 13, fontWeight: 700, color: "#1a1a2e" }}>{v}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div style={{ display: "flex", gap: 12, marginBottom: 28 }}>
-              {["Safety", "Match", "Reach"].map(tier => (
-                <div key={tier} style={{ flex: 1, background: tierBg[tier], borderRadius: 12, padding: "14px 16px", textAlign: "center" }}>
-                  <div style={{ fontSize: 22, fontWeight: 800, color: tierColor[tier] }}>{results.filter(r => r.tier === tier).length}</div>
-                  <div style={{ fontSize: 12, color: tierColor[tier], fontWeight: 600 }}>{tier}</div>
-                </div>
-              ))}
-            </div>
-
-            {["Reach", "Match", "Safety"].map(tier => (
-              <div key={tier} style={{ marginBottom: 28 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
-                  <div style={{ width: 10, height: 10, borderRadius: "50%", background: tierColor[tier] }} />
-                  <h3 style={{ margin: 0, color: tierColor[tier], fontSize: 15, fontWeight: 700 }}>{tier} Schools</h3>
-                </div>
-                {results.filter(r => r.tier === tier).map(r => (
-                  <div key={r.name} style={{ background: "#fff", borderRadius: 12, padding: "14px 18px", marginBottom: 10, boxShadow: "0 1px 6px rgba(0,0,0,0.06)", borderLeft: `4px solid ${tierColor[tier]}` }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-                      <div>
-                        <span style={{ fontWeight: 700, fontSize: 15 }}>{r.name}</span>
-                        {r.strongMajors?.includes(profile.major) && (
-                          <span style={{ marginLeft: 8, fontSize: 11, background: "#e8f5e9", color: "#2e7d32", padding: "2px 8px", borderRadius: 10, fontWeight: 600 }}>
-                            Strong for {profile.major}
-                          </span>
-                        )}
-                      </div>
-                      <span style={{ background: tierBg[tier], color: tierColor[tier], fontWeight: 800, fontSize: 17, padding: "3px 14px", borderRadius: 20 }}>{r.pct}%</span>
-                    </div>
-                    <div style={{ background: "#f0f0f0", borderRadius: 99, height: 5 }}>
-                      <div style={{ width: `${r.pct}%`, height: 5, borderRadius: 99, background: tierColor[tier] }} />
-                    </div>
-                    <div style={{ fontSize: 11, color: "#aaa", marginTop: 6 }}>
-                      Avg SAT: {r.satMid} · Accept rate: {Math.round(r.acceptRate * 100)}%
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ))}
-
-            <PrimaryBtn onClick={() => { setStep(0); setResults(null); }}>← Start Over</PrimaryBtn>
-          </>
-        )}
-
-      </div>
-    </div>
-  );
-}
