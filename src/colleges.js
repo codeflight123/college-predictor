@@ -1,165 +1,76 @@
-import { useState } from "react";
-import {
-  COLLEGES, MAJORS, AP_COURSES, HONORS_COURSES,
-  LEADERSHIP_ROLES, US_STATES, LANGUAGES, AWARDS, MAJOR_EC_SUGGESTIONS
-} from "./collegesData";
-import { scoreCollege } from "./scoring";
-import { groqChat } from "./groq";
+// Minimal clean data module with empty placeholders to avoid syntax errors.
+export const COMPETITIVE_CITIES = [];
+export const US_STATES = [];
+export const MAJORS = [];
+export const AP_COURSES = [];
+export const HONORS_COURSES = [];
+export const LANGUAGES = [];
+export const LEADERSHIP_ROLES = [];
+export const AWARDS = [];
+export const MAJOR_EC_SUGGESTIONS = { default: [] };
+export const COLLEGES = [];
 
-const tierColor = { Reach: "#e74c3c", Match: "#f39c12", Safety: "#27ae60" };
-const tierBg   = { Reach: "#fdecea", Match: "#fef9e7", Safety: "#eafaf1" };
-const STEPS = ["School Info", "Scores & GPA", "Courses", "Activities", "Essay", "Results"];
+export default {};
+// Data exports for the app: colleges and selection lists
+export const COMPETITIVE_CITIES = [
+  "palo alto", "stanford", "menlo park", "mountain view", "cupertino",
+  "new york", "nyc", "manhattan", "brooklyn",
+  "san francisco", "los angeles", "chicago", "boston", "seattle"
+];
 
-const s = {
-  page: { minHeight: "100vh", background: "#f4f5fb", fontFamily: "'Segoe UI', system-ui, sans-serif" },
-  wrap: { maxWidth: 700, margin: "0 auto", padding: "40px 20px" },
-  card: { background: "#fff", borderRadius: 16, padding: 32, boxShadow: "0 2px 16px rgba(0,0,0,0.08)", marginBottom: 24 },
-  h2: { marginTop: 0, fontSize: 18, color: "#1a1a2e", fontWeight: 700 },
-  label: { fontSize: 13, color: "#555", fontWeight: 600 },
-  input: { width: "100%", padding: "10px 14px", fontSize: 15, border: "1px solid #ddd", borderRadius: 8, marginTop: 6, boxSizing: "border-box" },
-  tag: (active, color = "#6c63ff") => ({
-    padding: "6px 12px", borderRadius: 20, fontSize: 13, cursor: "pointer", border: "none",
-    background: active ? color : "#f0f0f0",
-    color: active ? "#fff" : "#555", fontWeight: active ? 600 : 400,
-    transition: "all 0.15s"
-  }),
-  row: { display: "flex", gap: 16, marginBottom: 20 },
+export const US_STATES = [
+  "AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID",
+  "IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS",
+  "MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK",
+  "OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"
+];
+
+export const MAJORS = [
+  "Undecided", "Computer Science", "Engineering", "Biology", "Business",
+  "Economics", "Psychology", "English", "History", "Art"
+];
+
+export const AP_COURSES = [
+  "AP Calculus AB", "AP Calculus BC", "AP Physics 1", "AP Physics C", "AP Chemistry",
+  "AP Biology", "AP English Language", "AP English Literature", "AP US History", "AP Microeconomics"
+];
+
+export const HONORS_COURSES = [
+  "Honors Math", "Honors Physics", "Honors Chemistry", "Honors English", "Honors History"
+];
+
+export const LANGUAGES = ["Spanish", "French", "Mandarin", "German", "Latin", "Japanese"];
+
+export const LEADERSHIP_ROLES = [
+  { label: "President", score: 90 },
+  { label: "Vice President", score: 80 },
+  { label: "Captain", score: 75 },
+  { label: "Founder", score: 85 },
+  { label: "Treasurer", score: 65 }
+];
+
+export const AWARDS = [
+  { label: "National Merit", category: "academic", score: 95 },
+  { label: "State Science Fair", category: "stem", score: 80 },
+  { label: "Art Competition", category: "arts", score: 70 },
+  { label: "All-State Athlete", category: "athletics", score: 75 },
+  { label: "Community Service", category: "community", score: 60 }
+];
+
+export const MAJOR_EC_SUGGESTIONS = {
+  "default": ["Volunteer locally", "Join a club", "Part-time research"],
+  "Computer Science": ["Contribute to open-source", "CS research internship", "Hackathons"],
+  "Engineering": ["Robotics team", "Engineering internship", "Design competitions"],
+  "Biology": ["Lab research", "Science fair project", "Clinical volunteering"],
+  "Business": ["Internship at a startup", "DECA/FBLA", "Start a small business"]
 };
 
-function PrimaryBtn({ children, onClick, disabled }) {
-  return (
-    <button onClick={onClick} disabled={disabled} style={{
-      width: "100%", padding: "13px 0", background: disabled ? "#ccc" : "#6c63ff",
-      color: "#fff", border: "none", borderRadius: 10, fontSize: 15,
-      fontWeight: 600, cursor: disabled ? "not-allowed" : "pointer", marginTop: 16
-    }}>{children}</button>
-  );
-}
-
-function SecBtn({ children, onClick }) {
-  return (
-    <button onClick={onClick} style={{
-      width: "100%", padding: "11px 0", background: "#f0f0f0",
-      color: "#333", border: "none", borderRadius: 10, fontSize: 14,
-      fontWeight: 500, cursor: "pointer", marginTop: 8
-    }}>{children}</button>
-  );
-}
-
-function SliderRow({ label, value, min, max, step, unit = "", onChange }) {
-  return (
-    <div style={{ marginBottom: 20 }}>
-      <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
-        <label style={s.label}>{label}</label>
-        <span style={{ fontSize: 14, fontWeight: 700, color: "#6c63ff" }}>{value}{unit}</span>
-      </div>
-      <input type="range" min={min} max={max} step={step} value={value}
-        onChange={e => onChange(parseFloat(e.target.value))}
-        style={{ width: "100%", accentColor: "#6c63ff" }} />
-      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 11, color: "#aaa", marginTop: 2 }}>
-        <span>{min}{unit}</span><span>{max}{unit}</span>
-      </div>
-    </div>
-  );
-}
-
-function SectionLabel({ children, count }) {
-  return (
-    <p style={{ fontSize: 13, color: "#555", fontWeight: 600, marginBottom: 10, marginTop: 20 }}>
-      {children} {count !== undefined && <span style={{ color: "#6c63ff" }}>({count} selected)</span>}
-    </p>
-  );
-}
-
-function TagCloud({ items, selected, onToggle, color }) {
-  return (
-    <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 16 }}>
-      {items.map(item => {
-        const key = typeof item === "string" ? item : item.label;
-        const isActive = typeof selected[0] === "string"
-          ? selected.includes(key)
-          : !!selected.find(x => x.label === key);
-        return (
-          <button key={key} style={s.tag(isActive, color || "#6c63ff")}
-            onClick={() => onToggle(item)}>{key}</button>
-        );
-      })}
-    </div>
-  );
-}
-
-export default function App() {
-  const [step, setStep] = useState(0);
-  const [testType, setTestType] = useState("SAT");
-  const [profile, setProfile] = useState({
-    hsName: "", hsCity: "", hsState: "", hsType: "public",
-    sat: 1200, act: 27, gpa: 3.5, weightedGpa: 3.8, major: "Undecided",
-    apCourses: [], honorsCourses: [], majorRelatedCourses: [],
-    languages: [], languageYears: {},
-    leadershipRoles: [],
-    ecList: [{ activity: "", years: 1, role: "", relatedToMajor: false }],
-    awards: [],
-    essay: "",
-    ecScore: null, essayScore: null,
-    ecFeedback: null, essayFeedback: null,
-  });
-  const [results, setResults] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [loadingMsg, setLoadingMsg] = useState("");
-
-  const update = (k, v) => setProfile(p => ({ ...p, [k]: v }));
-
-  function toggleString(key, item) {
-    setProfile(p => {
-      const arr = p[key];
-      return { ...p, [key]: arr.includes(item) ? arr.filter(x => x !== item) : [...arr, item] };
-    });
-  }
-
-  function toggleLeadership(role) {
-    setProfile(p => {
-      const exists = p.leadershipRoles.find(r => r.label === role.label);
-      return {
-        ...p,
-        leadershipRoles: exists
-          ? p.leadershipRoles.filter(r => r.label !== role.label)
-          : [...p.leadershipRoles, role]
-      };
-    });
-  }
-
-  function toggleAward(award) {
-    setProfile(p => {
-      const exists = p.awards.find(a => a.label === award.label);
-      return {
-        ...p,
-        awards: exists
-          ? p.awards.filter(a => a.label !== award.label)
-          : [...p.awards, award]
-      };
-    });
-  }
-
-  function updateEc(i, field, val) {
-    setProfile(p => {
-      const list = [...p.ecList];
-      list[i] = { ...list[i], [field]: val };
-      return { ...p, ecList: list };
-    });
-  }
-
-  function getMajorECSuggestions() {
-    if (!MAJOR_EC_SUGGESTIONS) return [];
-    const key = profile && profile.major ? profile.major : "default";
-    return MAJOR_EC_SUGGESTIONS[key] || MAJOR_EC_SUGGESTIONS["default"] || [];
-  }
-
-  async function scoreEssay() {
-    if (!profile.essay || profile.essay.length < 100) return;
-    setLoading(true);
-    setLoadingMsg("Grading your essay with Llama 3...");
-    try {
-      const res = await groqChat(
+// Minimal placeholder colleges so the UI and scoring can run. These values are illustrative.
+export const COLLEGES = [
+  { name: "Sample State University", satMid: 1200, gpaMid: 3.4, ecWeight: 0.6, essayWeight: 0.5, strongMajors: ["Business"], isPublic: true, state: "CA", acceptRate: 0.35 },
+  { name: "Tech Institute", satMid: 1450, gpaMid: 3.7, ecWeight: 0.7, essayWeight: 0.6, strongMajors: ["Computer Science","Engineering"], isPublic: false, state: "MA", acceptRate: 0.12 },
+  { name: "Liberal Arts College", satMid: 1280, gpaMid: 3.5, ecWeight: 0.65, essayWeight: 0.7, strongMajors: ["English","History"], isPublic: false, state: "NY", acceptRate: 0.28 }
+];
         `You are an experienced college admissions counselor. Read this college essay and give:
 1. A score out of 10
 2. What the essay does well (2-3 sentences)
@@ -248,6 +159,7 @@ IMPROVEMENTS: ...`,
           </p>
         </div>
 
+        {/* Progress bar */}
         <div style={{ display: "flex", gap: 6, marginBottom: 32 }}>
           {STEPS.map((label, i) => (
             <div key={label} style={{ flex: 1, textAlign: "center" }}>
@@ -257,7 +169,7 @@ IMPROVEMENTS: ...`,
           ))}
         </div>
 
-        {/* STEP 0 — School Info */}
+        {/* ── STEP 0: School Info ── */}
         {step === 0 && (
           <div style={s.card}>
             <h2 style={s.h2}>Your High School</h2>
@@ -289,16 +201,16 @@ IMPROVEMENTS: ...`,
 
             <div style={{ marginBottom: 20 }}>
               <label style={s.label}>High School Type</label>
-              <div style={{ display: "flex", gap: 8, marginTop: 8, flexWrap: "wrap" }}>
+              <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
                 {[
                   { val: "public", label: "🏫 Public" },
                   { val: "private", label: "🏛️ Private" },
                   { val: "charter", label: "📚 Charter" },
-                  { val: "magnet", label: "🔬 Magnet/STEM" },
+                  { val: "magnet", label: "🔬 Magnet / STEM" },
                   { val: "boarding", label: "🎒 Boarding" },
                 ].map(t => (
                   <button key={t.val} onClick={() => update("hsType", t.val)} style={{
-                    padding: "9px 14px", borderRadius: 8, fontSize: 13, fontWeight: 600,
+                    flex: 1, padding: "9px 6px", borderRadius: 8, fontSize: 12, fontWeight: 600,
                     border: `2px solid ${profile.hsType === t.val ? "#6c63ff" : "#ddd"}`,
                     background: profile.hsType === t.val ? "#6c63ff" : "#fff",
                     color: profile.hsType === t.val ? "#fff" : "#555", cursor: "pointer"
@@ -309,9 +221,9 @@ IMPROVEMENTS: ...`,
 
             <div style={{ background: "#f0eeff", borderRadius: 10, padding: 14, marginBottom: 16 }}>
               <p style={{ margin: 0, fontSize: 12, color: "#5b52cc", lineHeight: 1.6 }}>
-                <strong>Why this matters:</strong> Admissions officers consider your school context.
-                A 4.0 from a competitive magnet school or cities like Palo Alto or NYC carries
-                different weight than the same GPA elsewhere. We adjust your chances accordingly.
+                <strong>Why this matters:</strong> Admissions officers consider your school's context.
+                A 4.0 from a highly competitive magnet school or a city like Palo Alto or NYC carries
+                different weight than the same GPA from a rural public school. We adjust your chances accordingly.
               </p>
             </div>
 
@@ -319,7 +231,7 @@ IMPROVEMENTS: ...`,
           </div>
         )}
 
-        {/* STEP 1 — Scores & GPA */}
+        {/* ── STEP 1: Scores & GPA ── */}
         {step === 1 && (
           <div style={s.card}>
             <h2 style={s.h2}>Scores & GPA</h2>
@@ -356,7 +268,7 @@ IMPROVEMENTS: ...`,
           </div>
         )}
 
-        {/* STEP 2 — Courses */}
+        {/* ── STEP 2: Courses ── */}
         {step === 2 && (
           <div style={s.card}>
             <h2 style={s.h2}>Courses & Languages</h2>
@@ -369,15 +281,15 @@ IMPROVEMENTS: ...`,
             <TagCloud items={HONORS_COURSES} selected={profile.honorsCourses}
               onToggle={c => toggleString("honorsCourses", c)} />
 
-            <SectionLabel count={profile.majorRelatedCourses.filter(c => c.trim()).length}>
+            <SectionLabel count={profile.majorRelatedCourses.length}>
               Courses Related to {profile.major}
             </SectionLabel>
             <p style={{ fontSize: 12, color: "#888", marginTop: -8, marginBottom: 10 }}>
-              Any additional courses at your school directly related to your intended major.
+              List any additional courses at your school directly related to your intended major.
             </p>
             {profile.majorRelatedCourses.map((c, i) => (
-              <div key={i} style={{ display: "flex", gap: 8, marginBottom: 8, alignItems: "center" }}>
-                <input style={{ ...s.input, marginTop: 0, flex: 1 }}
+              <div key={i} style={{ display: "flex", gap: 8, marginBottom: 8 }}>
+                <input style={{ ...s.input, marginTop: 0 }}
                   placeholder={`e.g. Intro to ${profile.major}, Research Methods...`}
                   value={c} onChange={e => {
                     const arr = [...profile.majorRelatedCourses];
@@ -385,7 +297,7 @@ IMPROVEMENTS: ...`,
                     update("majorRelatedCourses", arr);
                   }} />
                 <button onClick={() => update("majorRelatedCourses", profile.majorRelatedCourses.filter((_, j) => j !== i))}
-                  style={{ padding: "8px 12px", borderRadius: 8, border: "none", background: "#fee2e2", color: "#dc2626", cursor: "pointer", flexShrink: 0 }}>✕</button>
+                  style={{ padding: "0 12px", borderRadius: 8, border: "none", background: "#fee2e2", color: "#dc2626", cursor: "pointer", marginTop: 0, flexShrink: 0 }}>✕</button>
               </div>
             ))}
             <button onClick={() => update("majorRelatedCourses", [...profile.majorRelatedCourses, ""])}
@@ -396,17 +308,17 @@ IMPROVEMENTS: ...`,
             <div style={{ marginTop: 24 }}>
               <SectionLabel count={profile.languages.length}>Foreign Languages</SectionLabel>
               <p style={{ fontSize: 12, color: "#888", marginTop: -8, marginBottom: 10 }}>
-                UC schools require 2+ years of a foreign language. Select all you study or have studied.
+                UC schools require 2+ years. Select all languages you study or have studied.
               </p>
               <TagCloud items={LANGUAGES} selected={profile.languages}
                 onToggle={l => toggleString("languages", l)} color="#0891b2" />
 
               {profile.languages.length > 0 && (
-                <div style={{ marginTop: 12, background: "#f0f9ff", borderRadius: 10, padding: 14 }}>
-                  <p style={{ ...s.label, marginBottom: 12 }}>Years studied per language</p>
+                <div style={{ marginTop: 12 }}>
+                  <p style={{ ...s.label, marginBottom: 10 }}>Years studied per language</p>
                   {profile.languages.map(lang => (
-                    <div key={lang} style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 10 }}>
-                      <span style={{ fontSize: 13, minWidth: 110, color: "#333", fontWeight: 500 }}>{lang}</span>
+                    <div key={lang} style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+                      <span style={{ fontSize: 13, minWidth: 100, color: "#333" }}>{lang}</span>
                       <input type="number" min={1} max={8}
                         value={profile.languageYears[lang] || 1}
                         onChange={e => update("languageYears", { ...profile.languageYears, [lang]: parseInt(e.target.value) })}
@@ -423,7 +335,7 @@ IMPROVEMENTS: ...`,
           </div>
         )}
 
-        {/* STEP 3 — Activities */}
+        {/* ── STEP 3: Activities ── */}
         {step === 3 && (
           <div style={s.card}>
             <h2 style={s.h2}>Leadership, Activities & Awards</h2>
@@ -436,7 +348,7 @@ IMPROVEMENTS: ...`,
               <SectionLabel count={profile.awards.length}>Awards & Honors</SectionLabel>
               {["academic", "stem", "arts", "athletics", "community"].map(cat => (
                 <div key={cat} style={{ marginBottom: 16 }}>
-                  <p style={{ fontSize: 12, color: "#888", fontWeight: 700, textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 8, marginTop: 0 }}>{cat}</p>
+                  <p style={{ fontSize: 12, color: "#888", fontWeight: 700, textTransform: "uppercase", marginBottom: 8 }}>{cat}</p>
                   <TagCloud
                     items={AWARDS.filter(a => a.category === cat)}
                     selected={profile.awards}
@@ -455,16 +367,16 @@ IMPROVEMENTS: ...`,
                   💡 Suggested ECs for {profile.major}
                 </p>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-                  {ecSuggestions.map(suggestion => (
-                    <button key={suggestion} onClick={() => {
-                      const exists = profile.ecList.find(e => e.activity === suggestion);
+                  {ecSuggestions.map(s2 => (
+                    <button key={s2} onClick={() => {
+                      const exists = profile.ecList.find(e => e.activity === s2);
                       if (!exists) {
-                        update("ecList", [...profile.ecList, { activity: suggestion, years: 1, role: "Member", relatedToMajor: true }]);
+                        update("ecList", [...profile.ecList, { activity: s2, years: 1, role: "Member", relatedToMajor: true }]);
                       }
                     }} style={{
                       padding: "4px 10px", borderRadius: 14, fontSize: 12, cursor: "pointer",
                       border: "1px dashed #a78bfa", background: "#faf5ff", color: "#7c3aed"
-                    }}>+ {suggestion}</button>
+                    }}>+ {s2}</button>
                   ))}
                 </div>
               </div>
@@ -475,9 +387,7 @@ IMPROVEMENTS: ...`,
                     <span style={{ fontSize: 13, fontWeight: 600, color: "#333" }}>Activity {i + 1}</span>
                     {profile.ecList.length > 1 && (
                       <button onClick={() => update("ecList", profile.ecList.filter((_, j) => j !== i))}
-                        style={{ background: "#fee2e2", border: "none", borderRadius: 6, padding: "3px 8px", color: "#dc2626", cursor: "pointer", fontSize: 12 }}>
-                        Remove
-                      </button>
+                        style={{ background: "#fee2e2", border: "none", borderRadius: 6, padding: "3px 8px", color: "#dc2626", cursor: "pointer", fontSize: 12 }}>Remove</button>
                     )}
                   </div>
                   <div style={{ marginBottom: 8 }}>
@@ -497,10 +407,10 @@ IMPROVEMENTS: ...`,
                         value={ec.role} onChange={e => updateEc(i, "role", e.target.value)} />
                     </div>
                   </div>
-                  <label style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer", fontSize: 13, marginTop: 4 }}>
+                  <label style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer", fontSize: 13 }}>
                     <input type="checkbox" checked={ec.relatedToMajor}
                       onChange={e => updateEc(i, "relatedToMajor", e.target.checked)} />
-                    <span style={{ color: "#555" }}>Related to {profile.major}</span>
+                    <span style={{ color: "#555" }}>Related to my intended major ({profile.major})</span>
                   </label>
                 </div>
               ))}
@@ -513,23 +423,13 @@ IMPROVEMENTS: ...`,
 
             {profile.ecFeedback && (
               <div style={{ marginTop: 16, borderRadius: 12, overflow: "hidden", border: "1px solid #e0e0e0" }}>
-                <div style={{ background: "#6c63ff", padding: "12px 16px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                  <span style={{ color: "#fff", fontWeight: 700, fontSize: 15 }}>EC Score</span>
-                  <span style={{ color: "#fff", fontWeight: 800, fontSize: 22 }}>{profile.ecScore}/10</span>
+                <div style={{ background: "#6c63ff", padding: "12px 16px", display: "flex", justifyContent: "space-between" }}>
+                  <span style={{ color: "#fff", fontWeight: 700 }}>EC Score</span>
+                  <span style={{ color: "#fff", fontWeight: 800, fontSize: 20 }}>{profile.ecScore}/10</span>
                 </div>
                 <div style={{ background: "#f9f9f9", padding: 16 }}>
-                  {profile.ecFeedback.strengths && (
-                    <div style={{ marginBottom: 12 }}>
-                      <p style={{ margin: "0 0 4px", fontSize: 12, fontWeight: 700, color: "#27ae60" }}>✅ STRENGTHS</p>
-                      <p style={{ margin: 0, fontSize: 13, color: "#333", lineHeight: 1.6 }}>{profile.ecFeedback.strengths}</p>
-                    </div>
-                  )}
-                  {profile.ecFeedback.improvements && (
-                    <div>
-                      <p style={{ margin: "0 0 4px", fontSize: 12, fontWeight: 700, color: "#e67e22" }}>⚠️ IMPROVEMENTS</p>
-                      <p style={{ margin: 0, fontSize: 13, color: "#333", lineHeight: 1.6 }}>{profile.ecFeedback.improvements}</p>
-                    </div>
-                  )}
+                  {profile.ecFeedback.strengths && <p style={{ margin: "0 0 10px", fontSize: 13, color: "#333" }}><strong style={{ color: "#27ae60" }}>✅ Strengths:</strong> {profile.ecFeedback.strengths}</p>}
+                  {profile.ecFeedback.improvements && <p style={{ margin: 0, fontSize: 13, color: "#333" }}><strong style={{ color: "#e67e22" }}>⚠️ Improvements:</strong> {profile.ecFeedback.improvements}</p>}
                 </div>
               </div>
             )}
@@ -541,7 +441,7 @@ IMPROVEMENTS: ...`,
           </div>
         )}
 
-        {/* STEP 4 — Essay */}
+        {/* ── STEP 4: Essay ── */}
         {step === 4 && (
           <div style={s.card}>
             <h2 style={s.h2}>College Essay</h2>
@@ -555,29 +455,14 @@ IMPROVEMENTS: ...`,
 
             {profile.essayFeedback && (
               <div style={{ marginTop: 16, borderRadius: 12, overflow: "hidden", border: "1px solid #e0e0e0" }}>
-                <div style={{ background: "#6c63ff", padding: "12px 16px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                  <span style={{ color: "#fff", fontWeight: 700, fontSize: 15 }}>Essay Grade</span>
-                  <span style={{ color: "#fff", fontWeight: 800, fontSize: 22 }}>{profile.essayScore}/10</span>
+                <div style={{ background: "#6c63ff", padding: "12px 16px", display: "flex", justifyContent: "space-between" }}>
+                  <span style={{ color: "#fff", fontWeight: 700 }}>Essay Grade</span>
+                  <span style={{ color: "#fff", fontWeight: 800, fontSize: 20 }}>{profile.essayScore}/10</span>
                 </div>
                 <div style={{ background: "#f9f9f9", padding: 16 }}>
-                  {profile.essayFeedback.strengths && (
-                    <div style={{ marginBottom: 12 }}>
-                      <p style={{ margin: "0 0 4px", fontSize: 12, fontWeight: 700, color: "#27ae60" }}>✅ STRENGTHS</p>
-                      <p style={{ margin: 0, fontSize: 13, color: "#333", lineHeight: 1.6 }}>{profile.essayFeedback.strengths}</p>
-                    </div>
-                  )}
-                  {profile.essayFeedback.improvements && (
-                    <div style={{ marginBottom: 12 }}>
-                      <p style={{ margin: "0 0 4px", fontSize: 12, fontWeight: 700, color: "#e67e22" }}>⚠️ IMPROVEMENTS</p>
-                      <p style={{ margin: 0, fontSize: 13, color: "#333", lineHeight: 1.6 }}>{profile.essayFeedback.improvements}</p>
-                    </div>
-                  )}
-                  {profile.essayFeedback.verdict && (
-                    <div>
-                      <p style={{ margin: "0 0 4px", fontSize: 12, fontWeight: 700, color: "#6c63ff" }}>🎯 VERDICT</p>
-                      <p style={{ margin: 0, fontSize: 13, color: "#333", lineHeight: 1.6 }}>{profile.essayFeedback.verdict}</p>
-                    </div>
-                  )}
+                  {profile.essayFeedback.strengths && <div style={{ marginBottom: 12 }}><p style={{ margin: "0 0 4px", fontSize: 12, fontWeight: 700, color: "#27ae60" }}>✅ STRENGTHS</p><p style={{ margin: 0, fontSize: 13, color: "#333", lineHeight: 1.6 }}>{profile.essayFeedback.strengths}</p></div>}
+                  {profile.essayFeedback.improvements && <div style={{ marginBottom: 12 }}><p style={{ margin: "0 0 4px", fontSize: 12, fontWeight: 700, color: "#e67e22" }}>⚠️ IMPROVEMENTS</p><p style={{ margin: 0, fontSize: 13, color: "#333", lineHeight: 1.6 }}>{profile.essayFeedback.improvements}</p></div>}
+                  {profile.essayFeedback.verdict && <div><p style={{ margin: "0 0 4px", fontSize: 12, fontWeight: 700, color: "#6c63ff" }}>🎯 VERDICT</p><p style={{ margin: 0, fontSize: 13, color: "#333", lineHeight: 1.6 }}>{profile.essayFeedback.verdict}</p></div>}
                 </div>
               </div>
             )}
@@ -589,16 +474,13 @@ IMPROVEMENTS: ...`,
             <PrimaryBtn onClick={compute} disabled={!profile.essayScore}>
               {profile.essayScore ? "Predict My Colleges 🚀" : "Grade essay first"}
             </PrimaryBtn>
-            <button onClick={compute} style={{
-              width: "100%", background: "none", border: "none",
-              color: "#aaa", fontSize: 13, cursor: "pointer", marginTop: 8, padding: "8px 0"
-            }}>
+            <button onClick={compute} style={{ width: "100%", background: "none", border: "none", color: "#aaa", fontSize: 13, cursor: "pointer", marginTop: 8, padding: "8px 0" }}>
               Skip essay → predict anyway
             </button>
           </div>
         )}
 
-        {/* STEP 5 — Results */}
+        {/* ── STEP 5: Results ── */}
         {step === 5 && results && (
           <>
             <div style={{ background: "#fff", borderRadius: 16, padding: 20, marginBottom: 20, boxShadow: "0 2px 12px rgba(0,0,0,0.07)" }}>
@@ -629,13 +511,8 @@ IMPROVEMENTS: ...`,
 
             <div style={{ display: "flex", gap: 12, marginBottom: 28 }}>
               {["Safety", "Match", "Reach"].map(tier => (
-                <div key={tier} style={{
-                  flex: 1, background: tierBg[tier], borderRadius: 12,
-                  padding: "14px 16px", textAlign: "center"
-                }}>
-                  <div style={{ fontSize: 22, fontWeight: 800, color: tierColor[tier] }}>
-                    {results.filter(r => r.tier === tier).length}
-                  </div>
+                <div key={tier} style={{ flex: 1, background: tierBg[tier], borderRadius: 12, padding: "14px 16px", textAlign: "center" }}>
+                  <div style={{ fontSize: 22, fontWeight: 800, color: tierColor[tier] }}>{results.filter(r => r.tier === tier).length}</div>
                   <div style={{ fontSize: 12, color: tierColor[tier], fontWeight: 600 }}>{tier}</div>
                 </div>
               ))}
@@ -648,11 +525,7 @@ IMPROVEMENTS: ...`,
                   <h3 style={{ margin: 0, color: tierColor[tier], fontSize: 15, fontWeight: 700 }}>{tier} Schools</h3>
                 </div>
                 {results.filter(r => r.tier === tier).map(r => (
-                  <div key={r.name} style={{
-                    background: "#fff", borderRadius: 12, padding: "14px 18px",
-                    marginBottom: 10, boxShadow: "0 1px 6px rgba(0,0,0,0.06)",
-                    borderLeft: `4px solid ${tierColor[tier]}`
-                  }}>
+                  <div key={r.name} style={{ background: "#fff", borderRadius: 12, padding: "14px 18px", marginBottom: 10, boxShadow: "0 1px 6px rgba(0,0,0,0.06)", borderLeft: `4px solid ${tierColor[tier]}` }}>
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
                       <div>
                         <span style={{ fontWeight: 700, fontSize: 15 }}>{r.name}</span>
@@ -662,10 +535,7 @@ IMPROVEMENTS: ...`,
                           </span>
                         )}
                       </div>
-                      <span style={{
-                        background: tierBg[tier], color: tierColor[tier],
-                        fontWeight: 800, fontSize: 17, padding: "3px 14px", borderRadius: 20
-                      }}>{r.pct}%</span>
+                      <span style={{ background: tierBg[tier], color: tierColor[tier], fontWeight: 800, fontSize: 17, padding: "3px 14px", borderRadius: 20 }}>{r.pct}%</span>
                     </div>
                     <div style={{ background: "#f0f0f0", borderRadius: 99, height: 5 }}>
                       <div style={{ width: `${r.pct}%`, height: 5, borderRadius: 99, background: tierColor[tier] }} />
