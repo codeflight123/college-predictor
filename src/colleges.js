@@ -36,7 +36,7 @@ export const MAJORS = [
   "History","Philosophy","English","Linguistics","Journalism","Communications",
   "Psychology","Sociology","Anthropology","Education","Social Work",
   "Architecture","Urban Planning","Design","Film","Music","Theater","Art",
-  "Agriculture","Veterinary","Forestry","Marine Biology","Undecided",
+  "Agriculture","Veterinary","Forestry","Marine Biology","Undecided","Machine Learning","Cybersecurity","Information Systems","Human-Computer Interaction",
 ];
 
 export const AP_COURSES = [
